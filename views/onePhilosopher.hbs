@@ -1,0 +1,35 @@
+<main class="mobile-main"
+    style="background-image: url(img/background-redflowers.jpg); opacity: 0.8; border-top: 10px solid rgba(0, 0, 0, 0.8);">
+    <section class="profile">
+        <div class="profile-container">
+            <div class="profile-body">
+                <h1 id="philosopher-name" class="philosopher-name"></h1>
+                <!-- add video from youtube  -->
+                <div class="video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{philosopher.youtubeVideoID}}" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <h2 class="about-philosopher">About</h2>
+                <div class="profile-summary">
+                    <img id="philosopher-img" src="/img/philosopher-profile-images/{{philosopher.imageUrl}}"
+                        alt="picture of philosopher">
+                    <div class="profile-content">
+                        <p id="philosopher-about">{{philosopher.about}}</p>
+                        <div class="philosopher-more">
+                            <button href="{{philosopher.wikiLink}}" id="wiki-link">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script src="https://apis.google.com/js/api.js"></script>
+<script src="assets/lib/JQ/jquery-3.6.0.min.js"></script>
+<script src="assets/js/youtube.js"></script>
+<script src="assets/js/API.js"></script>
+<script src="assets/js/Profiles.js"></script>

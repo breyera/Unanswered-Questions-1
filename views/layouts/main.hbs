@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courgette&display=swap">
     <link rel="stylesheet" href="/css/normalize.css">
@@ -15,6 +21,41 @@
     <link rel="stylesheet" href="/css/owl.css">
 
 </head>
+
 <body>
+    <header class="nav-header navigation">
+        <nav class="main-nav">
+            <p class="header active">UnansweredQuestions</p>
+            <ul class="hidden menu" id="myLinks">
+                <li><a href="/">Home</a></li>
+                <li><a href="/philosophers">Famous Philosophers</a></li>
+                <li><a href="/quiz">Quiz</a></li>
+                <li><a href="/quotes">Quotes</a></li>
+            </ul>
+        </nav>
+        <!-- for hamburger menu  -->
+        <nav id="menuToggle">
+            <div id="menuToggle">
+                <input type="checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul id="menu">
+                    <a href="/">
+                        <li>Home</li>
+                    </a>
+                    <a href="/philosophers">
+                        <li>Famous Philosophers</li>
+                    </a>
+                    <a href="/quiz">
+                        <li>Quiz</li>
+                    </a>
+                    <a href="/quotes">
+                        <li>Quotes</li>
+                    </a>
+                </ul>
+            </div>
+        </nav>
+    </header>
     {{{body}}}
 </body>
