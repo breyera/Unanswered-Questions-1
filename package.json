@@ -1,35 +1,40 @@
 {
-  "name": "unanswered-questions",
-  "version": "2.0.0",
-  "description": "A project for UW Full Stack Flex Course",
-  "main": "server.js",
-  "scripts": {
-    "test": "jest",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ZacharyEggert/Unanswered-Questions.git"
-  },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ZacharyEggert/Unanswered-Questions/issues"
-  },
-  "homepage": "https://github.com/ZacharyEggert/Unanswered-Questions#readme",
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "connect-session-sequelize": "^7.1.1",
-    "dotenv": "^9.0.0",
-    "eslint-config-prettier": "^8.3.0",
-    "express": "^4.17.1",
-    "express-session": "^1.17.1",
-    "mysql2": "^2.2.5",
-    "sequelize": "^6.6.2"
-  },
-  "devDependencies": {
-    "eslint": "^7.25.0",
-    "jest": "^26.6.3",
-    "prettier": "^2.2.1"
-  }
+    "name": "unanswered-questions",
+    "version": "2.0.0",
+    "description": "A project for UW Full Stack Flex Course",
+    "main": "server.js",
+    "scripts": {
+        "test": "jest",
+        "start": "yarn build:css && node server.js",
+        "build:css": "postcss public/css/tailwind.css -o public/css/style.css"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ZacharyEggert/Unanswered-Questions.git"
+    },
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ZacharyEggert/Unanswered-Questions/issues"
+    },
+    "homepage": "https://github.com/ZacharyEggert/Unanswered-Questions#readme",
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "connect-session-sequelize": "^7.1.1",
+        "dotenv": "^9.0.0",
+        "eslint-config-prettier": "^8.3.0",
+        "express": "^4.17.1",
+        "express-handlebars": "^5.3.1",
+        "express-session": "^1.17.1",
+        "mysql2": "^2.2.5",
+        "sequelize": "^6.6.2",
+        "tailwindcss": "^2.1.2"
+    },
+    "devDependencies": {
+        "cssnano": "^5.0.2",
+        "eslint": "^7.25.0",
+        "jest": "^26.6.3",
+        "prettier": "^2.2.1",
+        "yarn": "^1.22.10"
+    }
 }
