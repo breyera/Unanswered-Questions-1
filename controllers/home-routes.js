@@ -66,7 +66,7 @@ router.get('/quiz/', async (req, res) => {
         const philosopher = philosopherData.get({ plain: true });
 
         res.render('quiz', {
-            ...philosopher,
+            ...quiz,
             logged_in: req.session.loggeed_in
         });
     } catch (err) {
@@ -90,7 +90,7 @@ router.get('/quotes/:id', async (req, res) => {
         const philosopher = philosopherData.get({ plain: true });
 
         res.render('quotes', {
-            ...philosopher,
+            ...quotes,
             logged_in: req.session.loggeed_in
         });
     } catch (err) {
