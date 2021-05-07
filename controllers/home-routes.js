@@ -98,7 +98,7 @@ router.get('/quotes/:id', async (req, res) => {
     }
 });
 
-router.get('/philosopher/:id', withauth, async (req, res) => {
+router.get('/', withauth, async (req, res) => {
     try {
         const userData = await User.findByPK(req.session.user_id, {
             attributes: { exclude : ['password'] },
