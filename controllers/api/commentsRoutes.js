@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const { Comment } = require('../../models');
+const { Comments } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
     try {
-        const newComment = await Comment.create({
+        const newComment = await Comments.create({
             ...req.body,
             user_id: req.session.user_id,
-            question_id: req.body.question_id
+            daily_id: req.body.daily_id
         });
         // it will return to the commented post
         res.redirect( req.header( 'Referrer' ) );
