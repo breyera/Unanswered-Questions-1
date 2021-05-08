@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow: visible;">
 
 <head>
     <meta charset="UTF-8">
@@ -20,11 +20,12 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/owl.css">
     <link rel="stylesheet" href="/css/philosopherlist.css">
+    <link rel="stylesheet" media="only screen and (max-width: 768px)" href="/css/mobilehp.css">
 
 </head>
 
-<body>
-    <header class="nav-header navigation">
+<body style="overflow: visible;">
+    <header class="nav-header navigation z-50 bg-black bg-opacity-60">
         <nav class="main-nav">
             <p class="header active">UnansweredQuestions</p>
             <ul class="menu" id="myLinks">
@@ -36,12 +37,12 @@
         </nav>
         <!-- for hamburger menu  -->
         <nav id="menuToggle">
-            <div id="menuToggle">
+            <div id="menuToggle" >
                 <input type="checkbox" />
                 <span></span>
                 <span></span>
                 <span></span>
-                <ul id="menu">
+                <ul id="menu" class="rounded-br-full">
                     <a href="/">
                         <li>Home</li>
                     </a>
@@ -51,9 +52,24 @@
                     <a href="/quiz">
                         <li>Quiz</li>
                     </a>
-                    <a href="/quotes">
-                        <li>Quotes</li>
+                    <a href="/qotd">
+                        <li>Daily<br>Question</li>
                     </a>
+                    <a href="/polls">
+                        <li>Polls</li>
+                    </a>
+                    {{#if loggedIn}}
+                    <a href="/logout">
+                        <li>Logout</li>
+                    </a>
+                    <a href="/chat">
+                        <li>LiveChat<br>&nbsp;<br></li>
+                    </a>
+                    {{else}}
+                    <a href="/login">
+                        <li>Login<br>&nbsp;<br></li>
+                    </a>
+                    {{/if}}
                 </ul>
             </div>
         </nav>
