@@ -38,23 +38,24 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-      const pollData = await Polls.update({
-        poll_name: req.body.poll_name,
-      },
-      {
-        where: {
-          id: req.params.id,
-        },
-      },
-      );
-  
-      if (!pollData) {
-        res.status(404).json({ message: "No poll found with this id!" });
-        return;
-      }
-      res.status(200).json(pollData);
+        const pollData = await Polls.update(
+            {
+                poll_name: req.body.poll_name,
+            },
+            {
+                where: {
+                    id: req.params.id,
+                },
+            }
+        );
+
+        if (!pollData) {
+            res.status(404).json({ message: 'No poll found with this id!' });
+            return;
+        }
+        res.status(200).json(pollData);
     } catch (err) {
-      res.status(500).json(err);
+        res.status(500).json(err);
     }
 });
 
