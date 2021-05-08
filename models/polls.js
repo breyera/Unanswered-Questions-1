@@ -39,3 +39,5 @@ Polls.init(
         modelName: 'polls',
     }
 )
+
+module.exports = Polls;
