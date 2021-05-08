@@ -59,8 +59,4 @@ User.init(
     }
 );
 
-<<<<<<< HEAD:models/user.js
 module.exports = User;
-=======
-module.exports = User
->>>>>>> 989022b00555bf0fdab35d2097b5a3d36d4ae3d2:models/User.js

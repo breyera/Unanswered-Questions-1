@@ -35,10 +35,6 @@ Polls.init(
         underscored: true,
         modelName: 'polls',
     }
-<<<<<<< HEAD:models/polls.js
 );
-=======
-)
 
 module.exports = Polls;
->>>>>>> 989022b00555bf0fdab35d2097b5a3d36d4ae3d2:models/Polls.js

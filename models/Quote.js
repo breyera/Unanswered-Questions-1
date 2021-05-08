@@ -30,5 +30,5 @@ Quote.init(
         underscored: true,
         modelName: 'quote',
     }
-)
-module.exports = Quote
+);
+module.exports = Quote;
