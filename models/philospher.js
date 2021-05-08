@@ -19,7 +19,11 @@ Philosopher.init(
         img: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        period: {
+            type: DataTypes.STRING
         }
+        //maybe make this its own model
 
     },
     {

@@ -13,6 +13,9 @@ Philosopher.hasMany(Quote, {
 DailyQuestion.hasMany(Comments, {
     foreignKey: 'daily_id'
 })
+User.hasMany(Comments, {
+    foreignKey: 'user_id'
+})
 
 Quote.belongsTo(Philosopher, {
     foreignKey: 'philosopher_id'
