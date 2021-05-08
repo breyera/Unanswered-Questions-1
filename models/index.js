@@ -1,4 +1,4 @@
-const Philosopher = require('./Philospher');
+const Philosopher = require('./Philosopher');
 const DailyQuestion = require('./DailyQuestion');
 const Quote = require('./Quote');
 const Test = require('./Test');
