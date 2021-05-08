@@ -7,13 +7,13 @@ router.post('/', withAuth, async (req, res) => {
         const newComment = await Comments.create({
             ...req.body,
             user_id: req.session.user_id,
-            daily_id: req.body.daily_id
+            daily_id: req.body.daily_id,
         });
         // it will return to the commented post
-        res.redirect( req.header( 'Referrer' ) );
-       /* res.status(200).json(newComment); */
+        res.redirect(req.header('Referrer'));
+        /* res.status(200).json(newComment); */
     } catch (err) {
-        res.status(500).json(err)
+        res.status(500).json(err);
     }
 });
 
