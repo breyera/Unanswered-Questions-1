@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class DailyQuestion extends Model { }
+class DailyQuestion extends Model {}
 
 DailyQuestion.init(
     {
@@ -10,13 +10,13 @@ DailyQuestion.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
 
         question: {
             type: DataTypes.STRING,
-            allowNull: false
-        }
+            allowNull: false,
+        },
 
         //add a boolean for if its already been posted?
     },
@@ -27,5 +27,5 @@ DailyQuestion.init(
         underscored: true,
         modelName: 'daily_question',
     }
-)
-module.exports = DailyQuestion
+);
+module.exports = DailyQuestion;

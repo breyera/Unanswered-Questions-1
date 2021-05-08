@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class Philosopher extends Model { }
+class Philosopher extends Model {}
 
 Philosopher.init(
     {
@@ -10,7 +10,7 @@ Philosopher.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
         name: {
             type: DataTypes.STRING,
@@ -18,13 +18,12 @@ Philosopher.init(
         },
         img: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
         },
         period: {
-            type: DataTypes.STRING
-        }
+            type: DataTypes.STRING,
+        },
         //maybe make this its own model
-
     },
     {
         sequelize,
@@ -33,7 +32,6 @@ Philosopher.init(
         underscored: true,
         modelName: 'philopher',
     }
-)
+);
 
-module.exports = Philosopher
-
+module.exports = Philosopher;

@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class User extends Model { }
+class User extends Model {}
 
 User.init(
     {
@@ -10,7 +10,7 @@ User.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
         email: {
             type: DataTypes.STRING,
@@ -18,7 +18,7 @@ User.init(
         },
         user_name: {
             type: dataTypes.STRING,
-            allowNull: false
+            allowNull: false,
         },
         password: {
             type: DataTypes.STRING,
@@ -30,19 +30,24 @@ User.init(
         admin: {
             type: dataType.BOOLEAN,
             allowNull: false,
-            defaultValue: false
-        }
+            defaultValue: false,
+        },
     },
-
 
     {
         hooks: {
             beforeCreate: async (newUserData) => {
-                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                newUserData.password = await bcrypt.hash(
+                    newUserData.password,
+                    10
+                );
                 return newUserData;
             },
             beforeUpdate: async (updatedUserData) => {
-                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+                updatedUserData.password = await bcrypt.hash(
+                    updatedUserData.password,
+                    10
+                );
                 return updatedUserData;
             },
         },
@@ -52,6 +57,6 @@ User.init(
         underscored: true,
         modelName: 'user',
     }
-)
+);
 
-module.exports = User
+module.exports = User;
