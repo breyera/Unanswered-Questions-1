@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const data = fs.readFileSync('../quotes_edited_seedv2', 'utf-8');
+const data = fs.readFileSync('../quotes_edited_seedv2.csv', 'utf-8');
 
 const quotes = data.split('\r\n');
 // console.log(quotes);
