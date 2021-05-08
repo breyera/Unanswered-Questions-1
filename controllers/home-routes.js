@@ -96,6 +96,28 @@ router.get('/quiz/', async (req, res) => {
     }
 });
 
+router.get('/qotd', async (req, res) => {
+    try {
+        const quotesData = await Quotes.findAll({
+            include: [
+                {
+                    model: Quote
+                },
+            ],
+        });
+
+        const quotes = quotesData.map(e=>e.get({ plain: true }));
+
+        res.render('qotd', {
+            quotes,
+            logged_in: req.session.loggeed_in || false,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+        console.error(err);
+    }
+});
+
 router.get('/qotd/:id', async (req, res) => {
     try {
         const quotesData = await Quotes.findByPK(req.params.id, {
@@ -111,6 +133,50 @@ router.get('/qotd/:id', async (req, res) => {
 
         res.render('qotd', {
             quotes,
+            logged_in: req.session.loggeed_in,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/poll/:id', async (req, res) => {
+    try {
+        const pollData = await Poll.findByPK(req.params.id, {
+            include: [
+                {
+                    model: poll,
+                    attributes: ['id'],
+                },
+            ],
+        });
+
+        const poll = pollData.get({ plain: true });
+
+        res.render('poll', {
+            poll,
+            logged_in: req.session.loggeed_in,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/chat/:id', async (req, res) => {
+    try {
+        const chatData = await Chat.findByPK(req.params.id, {
+            include: [
+                {
+                    model: chat,
+                    attributes: ['id'],
+                },
+            ],
+        });
+
+        const chat = chatData.get({ plain: true });
+
+        res.render('chat', {
+            chat,
             logged_in: req.session.loggeed_in,
         });
     } catch (err) {
