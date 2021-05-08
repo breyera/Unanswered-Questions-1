@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class Polls extends Model { }
+class Polls extends Model {}
 
 Polls.init(
     {
@@ -10,26 +10,23 @@ Polls.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
-
+            autoIncrement: true,
         },
         poll_name: {
-            type: dataTypes.STRING,
-
+            type: DataTypes.STRING,
         },
         poll_text: {
-            type: dataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         vote_yes: {
-            type: dataTypes.INTEGER,
-            defaultValue: 0
+            type: DataTypes.INTEGER,
+            defaultValue: 0,
         },
         vote_no: {
-            type: dataTypes.INTEGER,
-            defaultValue: 0
-        }
-
+            type: DataTypes.INTEGER,
+            defaultValue: 0,
+        },
     },
     {
         sequelize,
@@ -38,6 +35,6 @@ Polls.init(
         underscored: true,
         modelName: 'polls',
     }
-)
+);
 
 module.exports = Polls;
