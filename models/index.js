@@ -4,6 +4,10 @@ const Quote = require('./Quote');
 const Test = require('./Test');
 const User = require('./User');
 const Comments = require('./Comment');
+<<<<<<< HEAD
+=======
+const Polls = require('./Polls');
+>>>>>>> 989022b00555bf0fdab35d2097b5a3d36d4ae3d2
 
 Philosopher.hasMany(Quote, {
     foreignKey: 'philosopher_id',
@@ -34,7 +38,12 @@ module.exports = {
     DailyQuestion,
     Quote,
     User,
+<<<<<<< HEAD
     Comments, //,
+=======
+    Polls,
+    Comments//,
+>>>>>>> 989022b00555bf0fdab35d2097b5a3d36d4ae3d2
     //Test,
     // Answers
 };

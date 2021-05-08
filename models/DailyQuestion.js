@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class Polls extends Model {}
+class DailyQuestion extends Model {}
 
-Polls.init(
+DailyQuestion.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -12,27 +12,25 @@ Polls.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        poll_name: {
-            type: dataTypes.STRING,
-        },
-        poll_text: {
-            type: dataTypes.STRING,
+
+        question: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
-        vote_yes: {
-            type: dataTypes.INTEGER,
-            defaultValue: 0,
-        },
-        vote_no: {
-            type: dataTypes.INTEGER,
-            defaultValue: 0,
-        },
+
+        //add a boolean for if its already been posted?
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'polls',
+        modelName: 'daily_question',
     }
+<<<<<<< HEAD:models/dailyQuestion.js
 );
+module.exports = DailyQuestion;
+=======
+)
+module.exports = DailyQuestion
+>>>>>>> 989022b00555bf0fdab35d2097b5a3d36d4ae3d2:models/DailyQuestion.js
