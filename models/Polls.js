@@ -2,30 +2,42 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class DailyQuestion extends Model { }
+class Polls extends Model { }
 
-DailyQuestion.init(
+Polls.init(
     {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
-        },
 
-        question: {
-            type: DataTypes.STRING,
+        },
+        poll_name: {
+            type: dataTypes.STRING,
+
+        },
+        poll_text: {
+            type: dataTypes.STRING,
             allowNull: false
+        },
+        vote_yes: {
+            type: dataTypes.INTEGER,
+            defaultValue: 0
+        },
+        vote_no: {
+            type: dataTypes.INTEGER,
+            defaultValue: 0
         }
 
-        //add a boolean for if its already been posted?
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'daily_question',
+        modelName: 'polls',
     }
 )
-module.exports = DailyQuestion
+
+module.exports = Polls;
