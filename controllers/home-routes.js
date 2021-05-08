@@ -1,22 +1,30 @@
 const router = require('express').Router();
-const { Comment, Philosopher, Questions, Quiz, Quotes, User } = require('../models');
+const {
+    Comments,
+    Philosopher,
+    Questions,
+    Quiz,
+    Quote,
+    User,
+} = require('../models');
 const withauth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
-        const quotesData = await Quotes.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ['name'],
-                },
-            ],
-        });
+        // const quotesData = await Quotes.findAll({
+        //     include: [
+        //         {
+        //             model: User,
+        //             attributes: ['name'],
+        //         },
+        //     ],
+        // });
 
-        const quotes = quotesData.map((quotes) => quotes.get({ plain: true }));
-        
-        res.render('homepage', {
-            logged_in: req.session.logged_in       
+        // const quotes = quotesData.map((quotes) => quotes.get({ plain: true }));
+
+        res.render('home', {
+            logged_in: req.session.logged_in || false,
+            carouselQuotes: [{imgUrl: 'carousel-image1_b.jpg', quote: 'This is a quote', credit: 'Zachary Eggert'},{imgUrl: 'carousel-image2_b.jpg', quote: 'Don\'t quote me on that', credit: 'Alicia Breyer'},{imgUrl: 'carousel-image3_b.jpg', quote: 'This is a quote 3', credit: 'Zachary Eggert'}]
         });
     } catch (err) {
         res.status(500).json(err);
@@ -25,35 +33,54 @@ router.get('/', async (req, res) => {
 
 router.get('/philosopher/:id', async (req, res) => {
     try {
-        const philosopherData = await Philosopher.findAll({
-            include:[
+        const philosopherData = await Philosopher.findByPk(req.params.id, {
+            include: [
                 {
-                    model: philosophers,
-                    attributes: [
-                        'id'
-                    ],
+                    model: Quote
                 },
             ],
         });
 
         const philosopher = philosopherData.get({ plain: true });
 
-        res.render('philosopher', {
-            ...philosopher,
-            logged_in: req.session.loggeed_in
+        res.render('onePhilosopher', {
+            philosopher,
+            logged_in: req.session.loggeed_in || false,
         });
     } catch (err) {
         res.status(500).json(err);
+        console.error(err);
+    }
+});
+
+router.get('/philosophers', async (req, res) => {
+    try {
+        const philosophersData = await Philosopher.findAll({
+            include: [
+                {
+                    model: Quote
+                },
+            ],
+        });
+
+        const philosophers = philosophersData.map(e=>e.get({ plain: true }));
+
+        res.render('allPhilosophers', {
+            philosophers,
+            logged_in: req.session.loggeed_in || false,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+        console.error(err);
     }
 });
 
 router.get('/quiz/', async (req, res) => {
     try {
         const quizData = await Quiz.findByPK(req.params.id, {
-            include:[
+            include: [
                 {
                     model: quiz,
-                    
                 },
             ],
         });
@@ -61,8 +88,8 @@ router.get('/quiz/', async (req, res) => {
         const quiz = quizData.get({ plain: true });
 
         res.render('quiz', {
-            ...quiz,
-            logged_in: req.session.loggeed_in
+            quiz,
+            logged_in: req.session.loggeed_in,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -72,12 +99,10 @@ router.get('/quiz/', async (req, res) => {
 router.get('/qotd/:id', async (req, res) => {
     try {
         const quotesData = await Quotes.findByPK(req.params.id, {
-            include:[
+            include: [
                 {
                     model: quotes,
-                    attributes: [
-                        'id'
-                    ],
+                    attributes: ['id'],
                 },
             ],
         });
@@ -85,29 +110,27 @@ router.get('/qotd/:id', async (req, res) => {
         const quotes = quotesData.get({ plain: true });
 
         res.render('qotd', {
-            ...quotes,
-            logged_in: req.session.loggeed_in
+            quotes,
+            logged_in: req.session.loggeed_in,
         });
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-
-
 router.get('/', withauth, async (req, res) => {
     try {
         const userData = await User.findByPK(req.session.user_id, {
-            attributes: { exclude : ['password'] },
+            attributes: { exclude: ['password'] },
         });
 
         const user = userData.get({ plain: true });
 
         res.render('homepage', {
-            ...user,
-            logged_in: true
+            user,
+            logged_in: true,
         });
-    } catch (err) { 
+    } catch (err) {
         res.status(500).json(err);
     }
 });
