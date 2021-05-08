@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const data = fs.readFileSync('./quotes_dataset.csv', 'utf-8');
+const data = fs.readFileSync('../quotes_edited_seedv2', 'utf-8');
 
 const quotes = data.split('\r\n');
 // console.log(quotes);
@@ -23,7 +23,7 @@ quoteArray.forEach((e) => {
 
 console.log(output);
 fs.writeFileSync(
-    './seedQuotes.json',
+    './seedQuotesv2.json',
     JSON.stringify(output),
     { encoding: 'utf-8' },
     (e) => {
