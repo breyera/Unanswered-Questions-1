@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { Quotes, Philosophers } = require('../../models');
+const { Quote, Philosopher } = require('../../models');
 
 router.get('/', async (req, res) => {
     try {
-        const philData = await Philosophers.findAll({
-            include: [{ model: Quotes }],
+        const philData = await Philosopher.findAll({
+            include: [{ model: Quote }],
         });
         res.status(200).json(philData);
     } catch (err) {
@@ -14,8 +14,8 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const philData = await Philosophers.findByPk(req.params.id, {
-            include: [{ model: Quotes }],
+        const philData = await Philosopher.findByPk(req.params.id, {
+            include: [{ model: Quote }],
         });
         if (!philData) {
             res.status(404).json({ message: 'No philosopher found with that id!' });
@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
 //create a philosopher
 router.post('/', async (req, res) => {
     try {
-        const philData = await Philosophers.create(req.body);
+        const philData = await Philosopher.create(req.body);
         res.status(200).json(philData);
     } catch (err) {
         res.status(400).json(err);
@@ -40,9 +40,9 @@ router.post('/', async (req, res) => {
 // update a philosopher by its `id` value
 router.put('/:id', async (req, res) => {
     try {
-      const philData = await Philosophers.update(
+      const philData = await Philosopher.update(
         {
-          philosopher_name: req.body.philosopher_name,
+          name: req.body.name,
         },
         {
           where: {
@@ -63,7 +63,7 @@ router.put('/:id', async (req, res) => {
 //delete a philosopher
 router.delete('/:id', async (req, res) => {
     try {
-        const philData = await Philosophers.destroy({
+        const philData = await Philosopher.destroy({
             where: {
                 id: req.params.id,
             },

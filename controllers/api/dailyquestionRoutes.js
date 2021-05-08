@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { Questions } = require('../../models');
+const { DailyQuestion } = require('../../models');
 
 router.get('/', async (req, res) => {
     try {
-        const questData = await Questions.findAll();
+        const questData = await DailyQuestion.findAll();
         res.status(200).json(questData);
     } catch (err) {
         res.status(500).json(err);
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const questData = await Questions.findByPk(req.params.id, {
+        const questData = await DailyQuestion.findByPk(req.params.id, {
             where: {
                 id: req.params.id,
             },
@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const questData = await Questions.create(req.body);
+        const questData = await DailyQuestion.create(req.body);
         res.status(200).json(questData);
     } catch (err) {
         res.status(400).json(err);
@@ -38,8 +38,8 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-      const questData = await Questions.update({
-        question_name: req.body.question_name,
+      const questData = await DailyQuestion.update({
+        question: req.body.question,
       },
       {
         where: {
@@ -60,7 +60,7 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const questData = await Questions.destroy({
+        const questData = await DailyQuestion.destroy({
             where: {
                 id: req.params.id,
             },

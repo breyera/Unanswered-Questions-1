@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { Quotes, Philosophers } = require('../../models');
+const { Quote, Philosopher } = require('../../models');
 
 router.get('/', async (req, res) => {
     // find all quotes
     try {
-      const quoteData = await Quotes.findAll({
-          include: [{ model: Philosophers }],
+      const quoteData = await Quote.findAll({
+          include: [{ model: Philosopher }],
       });
       res.status(200).json(quoteData);
     } catch (err) {
@@ -16,8 +16,8 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     // find one quote by its `id` value
     try {
-     const quoteData = await Quotes.findByPk(req.params.id, {
-       where: { id: req.params.id }, include: [{ model: Philosophers }],
+     const quoteData = await Quote.findByPk(req.params.id, {
+       where: { id: req.params.id }, include: [{ model: Philosopher }],
      });
   
      if(!quoteData) {
@@ -34,7 +34,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     // create a new quote
     try {
-      const quoteData = await Quotes.create({
+      const quoteData = await Quote.create({
           philosopher_id: req.body.philosopher_id,
       });
       res.status(200).json(quoteData)
@@ -46,9 +46,9 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     // update a quote by its `id` value
     try {
-      const quoteData = await Quotes.update(
+      const quoteData = await Quote.update(
         {
-          quote_name: req.body.quote_name,
+          quote: req.body.quote,
         },
         {
           where: {
@@ -69,7 +69,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     // delete a quote by its `id` value
     try {
-      const quoteData = await Quotes.destroy({
+      const quoteData = await Quote.destroy({
         where: {
           id: req.params.id,
         },

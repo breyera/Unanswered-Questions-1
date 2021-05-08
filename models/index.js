@@ -1,9 +1,9 @@
-const Philosopher = require('./philospher');
-const DailyQuestion = require('./dailyQuestion');
-const Quote = require('./quote');
-const Test = require('./test')
-const User = require('./user')
-const Comments = require('./comment')
+const Philosopher = require('./Philospher');
+const DailyQuestion = require('./DailyQuestion');
+const Quote = require('./Quote');
+const Test = require('./Test')
+const User = require('./User')
+const Comments = require('./Comment')
 
 Philosopher.hasMany(Quote, {
     foreignKey: 'philosopher_id',
