@@ -3,7 +3,7 @@ const DailyQuestion = require('./DailyQuestion');
 const Quote = require('./Quote');
 const Test = require('./Test');
 const User = require('./User');
-const Comments = require('./Comment');
+const Comments = require('./Comments');
 const Polls = require('./Polls');
 
 Philosopher.hasMany(Quote, {
