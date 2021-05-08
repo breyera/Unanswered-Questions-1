@@ -9,7 +9,7 @@
 
             {{#each philosophers as |philosopher|}}
             {{#if (isAncient philosopher)}}
-            {{>philosopherCard philosopher}}
+            {{> philosopherCard philosopher}}
             {{/if}}
             {{/each}}
 
@@ -24,7 +24,7 @@
 
             {{#each philosophers as |philosopher|}}
             {{#if (isMedieval philosopher)}}
-            {{>philosopherCard philosopher}}
+            {{> philosopherCard philosopher}}
             {{/if}}
             {{/each}}
 
@@ -39,7 +39,7 @@
 
             {{#each philosophers as |philosopher|}}
             {{#if (isModern philosopher)}}
-            {{>philosopherCard philosopher}}
+            {{> philosopherCard philosopher}}
             {{/if}}
             {{/each}}
 
@@ -54,12 +54,10 @@
 
             {{#each philosophers as |philosopher|}}
             {{#if (isContemporary philosopher)}}
-            {{>philosopherCard philosopher}}
+            {{> philosopherCard philosopher}}
             {{/if}}
             {{/each}}
 
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/js/philosophersPage.js"></script>
 </section>
