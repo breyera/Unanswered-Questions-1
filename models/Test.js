@@ -6,6 +6,5 @@ class Test extends Model { }
 
 Test.init(
     {
-
     }
 )

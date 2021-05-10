@@ -17,7 +17,7 @@ User.init(
             allowNull: false,
         },
         user_name: {
-            type: dataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         password: {
@@ -28,7 +28,7 @@ User.init(
             },
         },
         admin: {
-            type: dataType.BOOLEAN,
+            type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: false
         }

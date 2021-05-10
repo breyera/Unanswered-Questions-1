@@ -14,19 +14,19 @@ Polls.init(
 
         },
         poll_name: {
-            type: dataTypes.STRING,
+            type: DataTypes.STRING,
 
         },
         poll_text: {
-            type: dataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         vote_yes: {
-            type: dataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             defaultValue: 0
         },
         vote_no: {
-            type: dataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             defaultValue: 0
         }
 
