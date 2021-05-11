@@ -10,26 +10,23 @@ Polls.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
-
+            autoIncrement: true,
         },
         poll_name: {
             type: DataTypes.STRING,
-
         },
         poll_text: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
         },
         vote_yes: {
             type: DataTypes.INTEGER,
-            defaultValue: 0
+            defaultValue: 0,
         },
         vote_no: {
             type: DataTypes.INTEGER,
-            defaultValue: 0
-        }
-
+            defaultValue: 0,
+        },
     },
     {
         sequelize,
@@ -38,6 +35,6 @@ Polls.init(
         underscored: true,
         modelName: 'polls',
     }
-)
+);
 
 module.exports = Polls;

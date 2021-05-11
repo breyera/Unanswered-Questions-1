@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
 
-class Quote extends Model { }
+class Quote extends Model {}
 
 Quote.init(
     {
@@ -9,21 +9,20 @@ Quote.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
         quote: {
             type: DataTypes.STRING,
             allowNull: false,
-
         },
 
         philosopher_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'philosopher',
-                key: 'id'
-            }
-        }
+                key: 'id',
+            },
+        },
     },
     {
         sequelize,
@@ -32,5 +31,5 @@ Quote.init(
         underscored: true,
         modelName: 'quote',
     }
-)
-module.exports = Quote
+);
+module.exports = Quote;

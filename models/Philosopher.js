@@ -10,7 +10,7 @@ Philosopher.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
         name: {
             type: DataTypes.STRING,
@@ -18,7 +18,7 @@ Philosopher.init(
         },
         img: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
         },
         period: {
             type: DataTypes.STRING
@@ -30,16 +30,14 @@ Philosopher.init(
             type: DataTypes.STRING
         }
         //maybe make this its own model
-
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'philsopher',
+        modelName: 'philosopher',
     }
-)
+);
 
-module.exports = Philosopher
-
+module.exports = Philosopher;

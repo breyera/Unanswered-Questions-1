@@ -1,0 +1,17 @@
+<div class="flex-initial w-full md:w-6/12 min-w-min flex flex-col justify-center">
+    <div class="w-11/12 flex-1" id="poll-question">
+        <h2>{{question}}</h2>
+    </div>
+    <div class="w-11/12 flex-1" id="poll-response" data-answered="{{hasAnswered}}">
+        {{#each answers as |answer|}}
+        <button id="choice-button ">{{answer.text}}</button>
+        {{/each}}
+    </div>
+    <div class="w-11/12 flex-1 hidden" id="poll-results">
+        {{#each answers as |answer|}}
+        <div class="">
+
+        </div>
+        {{/each}}
+    </div>
+</div>

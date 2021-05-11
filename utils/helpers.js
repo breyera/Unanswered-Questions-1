@@ -1,24 +1,24 @@
 const isCorrectPeriod = (philosopher, period) => {
-    if (philosopher.period === period) {
+    if (philosopher.period.toLowerCase() === period.toLowerCase()) {
         return true;
     }
     return false;
 };
 
 const isAncient = (philosopher) => {
-    return isCorrectPeriod(philosopher, 'Ancient');
+    return isCorrectPeriod(philosopher, 'ancient');
 };
 
 const isMedieval = (philosopher) => {
-    return isCorrectPeriod(philosopher, 'Medieval');
+    return isCorrectPeriod(philosopher, 'medieval');
 };
 
 const isModern = (philosopher) => {
-    return isCorrectPeriod(philosopher, 'Modern');
+    return isCorrectPeriod(philosopher, 'modern');
 };
 
 const isContemporary = (philosopher) => {
-    return isCorrectPeriod(philosopher, 'Contemporary');
+    return isCorrectPeriod(philosopher, 'contemporary');
 };
 
 module.exports = { isAncient, isMedieval, isModern, isContemporary };
