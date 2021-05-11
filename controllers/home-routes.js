@@ -47,9 +47,9 @@ router.get('/philosopher/:id', async (req, res) => {
             ],
         });
 
-        if (!philosopherData.about||!philosopherData.youtube) {
-            philosopherData = await fillPhilosopherData(req.params.id, philosopherData);
-        }
+        //if (!philosopherData.about||!philosopherData.youtube) {
+        //    philosopherData = await fillPhilosopherData(req.params.id, philosopherData);
+        //}
 
         const philosopher = philosopherData.get({ plain: true });
 
