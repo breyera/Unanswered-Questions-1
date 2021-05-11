@@ -1,6 +1,6 @@
 const { Philosopher } = require('../models')
 
-const philospherData = [
+const philosopherData = [
 
     {
         name: 'aristotle',
@@ -225,5 +225,5 @@ const philospherData = [
 
 ]
 
-const seedPhilosopher = () => Philosopher.bulkCreate(philospherData);
+const seedPhilosopher = () => Philosopher.bulkCreate(philosopherData);
 module.exports = seedPhilosopher;
