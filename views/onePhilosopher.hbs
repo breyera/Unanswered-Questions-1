@@ -1,9 +1,10 @@
-<main class="mobile-main"
-    style="background-image: url(img/background-redflowers.jpg); opacity: 0.8; border-top: 10px solid rgba(0, 0, 0, 0.8);">
+<main class="mobile-main opacity-80"
+    style="background-image: url(/img/background-redflowers.jpg);">
+    <div class="py-14"></div>
     <section class="profile">
         <div class="profile-container">
             <div class="profile-body">
-                <h1 id="philosopher-name" class="philosopher-name"></h1>
+                <h1 id="philosopher-name" class="philosopher-name"><b>{{philosopher.name}}</b></h1>
                 <!-- add video from youtube  -->
                 <div class="video">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/{{philosopher.youtubeVideoID}}" frameborder="0"
@@ -12,12 +13,18 @@
                 </div>
                 <h2 class="about-philosopher">About</h2>
                 <div class="profile-summary">
-                    <img id="philosopher-img" src="/img/philosopher-profile-images/{{philosopher.imageUrl}}"
-                        alt="picture of philosopher">
+                    <img class="w-48 m-0 p-0" id="philosopher-img" src="/img/philosopher-profile-images/{{philosopher.img}}"
+                        alt="Picture of {{philosopher.name}}">
                     <div class="profile-content">
-                        <p id="philosopher-about">{{philosopher.about}}</p>
+                        <p id="philosopher-about">
+                            {{#if philosopher.about}}
+                            {{philosopher.about}}
+                            {{else}}
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente repellat minus obcaecati magnam labore et, quam deserunt non consequatur, quibusdam nulla voluptates molestiae in sit? Vel porro consectetur consequatur officiis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, suscipit velit. At, neque magnam? Repellendus minima optio sint tempore porro sequi itaque maiores modi suscipit, mollitia inventore nostrum officia accusamus!
+                            {{/if}}
+                        </p>
                         <div class="philosopher-more">
-                            <button href="{{philosopher.wikiLink}}" id="wiki-link">Learn More</button>
+                            <button class="whitespace-nowrap w-auto px-4" href="{{philosopher.wikiLink}}" id="wiki-link">Learn More</button>
                         </div>
                     </div>
                 </div>
@@ -29,7 +36,6 @@
 </main>
 
 <script src="https://apis.google.com/js/api.js"></script>
-<script src="assets/lib/JQ/jquery-3.6.0.min.js"></script>
-<script src="assets/js/youtube.js"></script>
-<script src="assets/js/API.js"></script>
-<script src="assets/js/Profiles.js"></script>
+<script src="/lib/JQ/jquery-3.6.0.min.js"></script>
+<script src="/js/youtube.js"></script>
+<script src="/js/API.js"></script>
