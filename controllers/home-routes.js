@@ -13,16 +13,6 @@ const withauth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
-        // const quotesData = await Quotes.findAll({
-        //     include: [
-        //         {
-        //             model: User,
-        //             attributes: ['name'],
-        //         },
-        //     ],
-        // });
-
-        // const quotes = quotesData.map((quotes) => quotes.get({ plain: true }));
 
         res.render('home', {
             logged_in: req.session.logged_in || false,
@@ -51,13 +41,17 @@ router.get('/', async (req, res) => {
 
 router.get('/philosopher/:id', async (req, res) => {
     try {
-        const philosopherData = await Philosopher.findByPk(req.params.id, {
+        let philosopherData = await Philosopher.findByPk(req.params.id, {
             include: [
                 {
                     model: Quote,
                 },
             ],
         });
+
+        //if (!philosopherData.about||!philosopherData.youtube) {
+        //    philosopherData = await fillPhilosopherData(req.params.id, philosopherData);
+        //}
 
         const philosopher = philosopherData.get({ plain: true });
 
@@ -146,7 +140,7 @@ router.get('/', withauth, async (req, res) => {
 
         const user = userData.get({ plain: true });
 
-        res.render('homepage', {
+        res.render('home', {
             user,
             logged_in: true,
         });

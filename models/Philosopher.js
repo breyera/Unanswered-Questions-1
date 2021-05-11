@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class Philosopher extends Model {}
+class Philosopher extends Model { }
 
 Philosopher.init(
     {
@@ -21,8 +21,14 @@ Philosopher.init(
             allowNull: false,
         },
         period: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
+        about: {
+            type: DataTypes.STRING
+        },
+        videoUrl: {
+            type: DataTypes.STRING
+        }
         //maybe make this its own model
     },
     {

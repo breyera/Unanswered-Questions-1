@@ -693,10 +693,6 @@ h2 {
   font-size: 2rem;
   margin-top: 1rem;
 }
-.rw-sentence,
-.rw-sentence span{
-  white-space: nowrap;
-}
 .rw-wrapper {
   position: relative;
 }
@@ -831,13 +827,11 @@ h2 {
 @media screen and (max-width: 768px) {
   .rw-sentence {
     font-size: 18px;
-    white-space: nowrap;
   }
 }
 @media screen and (max-width: 320px) {
   .rw-sentence {
     font-size: 9px;
-    white-space: nowrap;
   }
 }
 

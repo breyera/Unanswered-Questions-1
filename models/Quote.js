@@ -15,6 +15,7 @@ Quote.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+
         philosopher_id: {
             type: DataTypes.INTEGER,
             references: {
