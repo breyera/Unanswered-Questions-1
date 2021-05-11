@@ -30,7 +30,11 @@ Philosopher.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
+<<<<<<< HEAD:models/Philosopher.js
         modelName: 'philosopher',
+=======
+        modelName: 'philsopher',
+>>>>>>> 2c4cd936bac42e6e3a1a4e276b74dfc817cb8d1f:models/Philospher.js
     }
 );
 
