@@ -11,20 +11,26 @@ const withauth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
-        // const quotesData = await Quotes.findAll({
-        //     include: [
-        //         {
-        //             model: User,
-        //             attributes: ['name'],
-        //         },
-        //     ],
-        // });
-
-        // const quotes = quotesData.map((quotes) => quotes.get({ plain: true }));
 
         res.render('home', {
             logged_in: req.session.logged_in || false,
-            carouselQuotes: [{imgUrl: 'carousel-image1_b.jpg', quote: 'This is a quote', credit: 'Zachary Eggert'},{imgUrl: 'carousel-image2_b.jpg', quote: 'Don\'t quote me on that', credit: 'Alicia Breyer'},{imgUrl: 'carousel-image3_b.jpg', quote: 'This is a quote 3', credit: 'Zachary Eggert'}]
+            carouselQuotes: [
+                {
+                    imgUrl: 'carousel-image1_b.jpg',
+                    quote: 'This is a quote',
+                    credit: 'Zachary Eggert',
+                },
+                {
+                    imgUrl: 'carousel-image2_b.jpg',
+                    quote: "Don't quote me on that",
+                    credit: 'Alicia Breyer',
+                },
+                {
+                    imgUrl: 'carousel-image3_b.jpg',
+                    quote: 'This is a quote 3',
+                    credit: 'Zachary Eggert',
+                },
+            ],
         });
     } catch (err) {
         res.status(500).json(err);
@@ -33,13 +39,17 @@ router.get('/', async (req, res) => {
 
 router.get('/philosopher/:id', async (req, res) => {
     try {
-        const philosopherData = await Philosopher.findByPk(req.params.id, {
+        let philosopherData = await Philosopher.findByPk(req.params.id, {
             include: [
                 {
-                    model: Quote
+                    model: Quote,
                 },
             ],
         });
+
+        //if (!philosopherData.about||!philosopherData.youtube) {
+        //    philosopherData = await fillPhilosopherData(req.params.id, philosopherData);
+        //}
 
         const philosopher = philosopherData.get({ plain: true });
 
@@ -58,12 +68,14 @@ router.get('/philosophers', async (req, res) => {
         const philosophersData = await Philosopher.findAll({
             include: [
                 {
-                    model: Quote
+                    model: Quote,
                 },
             ],
         });
 
-        const philosophers = philosophersData.map(e=>e.get({ plain: true }));
+        const philosophers = philosophersData.map((e) =>
+            e.get({ plain: true })
+        );
 
         res.render('allPhilosophers', {
             philosophers,
@@ -192,7 +204,7 @@ router.get('/', withauth, async (req, res) => {
 
         const user = userData.get({ plain: true });
 
-        res.render('homepage', {
+        res.render('home', {
             user,
             logged_in: true,
         });
