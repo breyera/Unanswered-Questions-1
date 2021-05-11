@@ -30,7 +30,7 @@ Comments.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'daily_question',
+        modelName: 'comments',
     }
 );
 

@@ -1,15 +1,43 @@
 <main>
     <!--  qotd card  -->
     <div class=''>
+        <h1>Daily Question</h1>
+        <h2>{{DailyQuestion.queston}}</h2>
 
     </div>
 
-    
+
     <!--  commment section  -->
     <div class=''>
-    <!--  each comments as comment card  -->
+        <h1>Comments</h1>
+        <!--  each comments as comment card  -->
+        {{#each comments as |comment|}}
+        <div>
+            <h3>{{user.name}}</h3>
+            <p>{{comment.comment}}</p>
 
-    <!--  submit comment (logged in)  -->
+        </div>
+        {{/each}}
+
+
+        <!--  submit comment (logged in)  -->
+        {{#if }}
+        <!--comment input -->
+        <div>
+            <h3>Join the discussion</h3>
+            <input type="text"><button>Submit</button>
+        </div>
+        {{#else}}
+        <!-- link to the login page -->
+        <div>
+            <h3>Log in to join the discussion.</h3>
+
+            <button>Log In</button>
+
+
+
+        </div>
+        {{/if}}
 
     </div>
 </main>
