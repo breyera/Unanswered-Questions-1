@@ -22,6 +22,12 @@ Philosopher.init(
         },
         period: {
             type: DataTypes.STRING
+        },
+        about: {
+            type: DataTypes.STRING
+        },
+        videoUrl: {
+            type: DataTypes.STRING
         }
         //maybe make this its own model
 
