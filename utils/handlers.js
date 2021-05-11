@@ -8,4 +8,12 @@ const getDaysSinceMayTenth = () => {
     return diff;
 };
 
+const fillPhilosopherData = async (id, philosopherData) => {
+    return newPhilosopherData;
+};
+
+const getYoutubeUrl = async (philosopherData) => {};
+
+const getWikiData = async (philosopherData) => {};
+
 module.exports = { getDaysSinceMayTenth };
