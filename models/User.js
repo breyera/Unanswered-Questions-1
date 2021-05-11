@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class User extends Model {}
+class User extends Model { }
 
 User.init(
     {
@@ -18,11 +18,7 @@ User.init(
         },
         user_name: {
             type: DataTypes.STRING,
-<<<<<<< HEAD
-            allowNull: false
-=======
             allowNull: false,
->>>>>>> ef0f495402fb81c2245a80a3a4bd4bfb7a421963
         },
         password: {
             type: DataTypes.STRING,
