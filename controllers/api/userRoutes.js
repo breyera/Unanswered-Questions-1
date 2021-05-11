@@ -22,15 +22,21 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        const userData = await User.findOne({ where: { user_name: req.body.user_name } });
+        const userData = await User.findOne({
+            where: { user_name: req.body.user_name },
+        });
         if (!userData) {
-            res.status(400).json({ message: 'Incorrect username or password, please try again' });
+            res.status(400).json({
+                message: 'Incorrect username or password, please try again',
+            });
             return;
         }
 
         const validPassword = await userData.checkPassword(req.body.password);
         if (!validPassword) {
-            res.status(400).json({ message: 'Incorrect username or password, please try again' });
+            res.status(400).json({
+                message: 'Incorrect username or password, please try again',
+            });
             return;
         }
 
@@ -38,7 +44,7 @@ router.post('/login', async (req, res) => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
             // with login, logged_name saved to session that we can use with handlebars
-            req.session.logged_name = userData.user_name
+            req.session.logged_name = userData.user_name;
             res.json({ user: userData, message: 'You are now logged in' });
         });
     } catch (err) {

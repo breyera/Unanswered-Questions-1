@@ -18,12 +18,14 @@ router.get('/:id', async (req, res) => {
             include: [{ model: Quote }],
         });
         if (!philData) {
-            res.status(404).json({ message: 'No philosopher found with that id!' });
+            res.status(404).json({
+                message: 'No philosopher found with that id!',
+            });
             return;
         }
         res.status(200).json(philData);
     } catch (err) {
-        res.status(500).json(err)
+        res.status(500).json(err);
     }
 });
 
@@ -40,23 +42,25 @@ router.post('/', async (req, res) => {
 // update a philosopher by its `id` value
 router.put('/:id', async (req, res) => {
     try {
-      const philData = await Philosopher.update(
-        {
-          name: req.body.name,
-        },
-        {
-          where: {
-            id: req.params.id,
-          },
+        const philData = await Philosopher.update(
+            {
+                name: req.body.name,
+            },
+            {
+                where: {
+                    id: req.params.id,
+                },
+            }
+        );
+        if (!philData) {
+            res.status(404).json({
+                message: 'No philosopher found with this id!',
+            });
+            return;
         }
-      );
-      if(!philData) {
-        res.status(404).json({ message: 'No philosopher found with this id!' });
-        return;
-      }
-      res.status(201).json(philData);
+        res.status(201).json(philData);
     } catch (err) {
-      res.status(400).json(err);
+        res.status(400).json(err);
     }
 });
 
@@ -70,7 +74,9 @@ router.delete('/:id', async (req, res) => {
         });
 
         if (!philData) {
-            res.status(404).json({ message: 'No philosopher found with this id!' });
+            res.status(404).json({
+                message: 'No philosopher found with this id!',
+            });
             return;
         }
 

@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Router } = require('express');
 const {
     Comments,
     Philosopher,
@@ -6,6 +7,7 @@ const {
     Quiz,
     Quote,
     User,
+    Chat,
 } = require('../models');
 const withauth = require('../utils/auth');
 
@@ -24,7 +26,23 @@ router.get('/', async (req, res) => {
 
         res.render('home', {
             logged_in: req.session.logged_in || false,
-            carouselQuotes: [{imgUrl: 'carousel-image1_b.jpg', quote: 'This is a quote', credit: 'Zachary Eggert'},{imgUrl: 'carousel-image2_b.jpg', quote: 'Don\'t quote me on that', credit: 'Alicia Breyer'},{imgUrl: 'carousel-image3_b.jpg', quote: 'This is a quote 3', credit: 'Zachary Eggert'}]
+            carouselQuotes: [
+                {
+                    imgUrl: 'carousel-image1_b.jpg',
+                    quote: 'This is a quote',
+                    credit: 'Zachary Eggert',
+                },
+                {
+                    imgUrl: 'carousel-image2_b.jpg',
+                    quote: "Don't quote me on that",
+                    credit: 'Alicia Breyer',
+                },
+                {
+                    imgUrl: 'carousel-image3_b.jpg',
+                    quote: 'This is a quote 3',
+                    credit: 'Zachary Eggert',
+                },
+            ],
         });
     } catch (err) {
         res.status(500).json(err);
@@ -36,7 +54,7 @@ router.get('/philosopher/:id', async (req, res) => {
         const philosopherData = await Philosopher.findByPk(req.params.id, {
             include: [
                 {
-                    model: Quote
+                    model: Quote,
                 },
             ],
         });
@@ -58,12 +76,14 @@ router.get('/philosophers', async (req, res) => {
         const philosophersData = await Philosopher.findAll({
             include: [
                 {
-                    model: Quote
+                    model: Quote,
                 },
             ],
         });
 
-        const philosophers = philosophersData.map(e=>e.get({ plain: true }));
+        const philosophers = philosophersData.map((e) =>
+            e.get({ plain: true })
+        );
 
         res.render('allPhilosophers', {
             philosophers,
@@ -133,6 +153,14 @@ router.get('/', withauth, async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
+});
+
+router.get('/chatroom', (req, res) => {
+    res.render('joinchat');
+});
+
+router.get('/chat', (req, res) => {
+    res.render('chat');
 });
 
 router.get('/login', (req, res) => {
