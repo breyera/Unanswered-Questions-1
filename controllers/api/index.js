@@ -6,6 +6,7 @@ const dailyQuestionRoutes = require('./dailyquestionRoutes');
 const commentsRoutes = require('./commentsRoutes');
 const userRoutes = require('./userRoutes');
 const pollRoutes = require('./pollRoutes');
+const chatRoutes = require('./chatRoutes');
 
 router.use('/philosophers', philosopherRoutes);
 router.use('/quotes', quotesRoutes);
@@ -14,5 +15,6 @@ router.use('/dailyquestion', dailyQuestionRoutes);
 router.use('/comments', commentsRoutes);
 router.use('/user', userRoutes);
 router.use('/polls', pollRoutes);
+router.use('/chat', chatRoutes);
 
 module.exports = router;
