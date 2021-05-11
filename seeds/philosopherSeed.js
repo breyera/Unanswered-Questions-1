@@ -33,12 +33,12 @@ const philosopherData = [
         period: 'ancient'
     },
     {
-        name: 'st.augustine',
+        name: 'st. augustine',
         img: 'augustine.jpg',
         period: 'medieval'
     },
     {
-        name: 'st.thomas aquinas',
+        name: 'st. thomas aquinas',
         img: 'thomas-aquinas.jpg',
         period: 'medieval'
     },
