@@ -27,13 +27,14 @@
         "express-handlebars": "^5.3.2",
         "express-session": "^1.17.1",
         "mysql2": "^2.2.5",
-        "postcss": "^8.2.15",
         "node-fetch": "^2.6.1",
+        "postcss": "^8.2.15",
         "postcss-cli": "^8.3.1",
         "sequelize": "^6.6.2",
         "tailwindcss": "^2.1.2"
     },
     "devDependencies": {
+        "autoprefixer": "^10.2.5",
         "cssnano": "^5.0.2",
         "eslint": "^7.26.0",
         "jest": "^26.6.3",
