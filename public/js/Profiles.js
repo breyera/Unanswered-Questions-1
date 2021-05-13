@@ -27,28 +27,6 @@ async function loadProfile(name) {
     philoBlurb.text(trimString(content));
     readMoreButts.attr('href', readMoreURL);
 
-    // let asideResponse = await fetchAside(name);
-
-    // console.log(asideResponse);
-
-    // let asPage = asideResponse.query.pages;
-    // let asPageId = Object.keys(asPage)[0];
-    // let asContent = asPage[asPageId].revisions[0]["*"];
-    // console.log(asContent);
-
-    // let birthDate = "" + asContent.match(/\| birth\_date(.*?)(\r\n|\r|\n)/g)
-    // let deathDate = "" + asContent.match(/\| death\_date(.*?)(\r\n|\r|\n)/g)
-
-    // birthDate = birthDate.split("= ")[1] ?? birthDate.split("=")[1];
-    // deathDate = deathDate.split("= ")[1] ?? deathDate.split("=")[1];
-
-    // let bDay = birthDate.match(/[0-9][0-9] [a-zA-Z]+ [0-9]+ (BC|AD)/g) ??
-    // birthDate.match(/[0-9][0-9] [a-zA-Z][a-zA-Z][a-zA-Z]+ [0-9]+/g)
-
-    // console.log(birthDate, "||||||||", deathDate);
-
-    // console.log(bDay);
-    // //dDay = ;
 }
 
 readMoreButts.on('click', function (e) {

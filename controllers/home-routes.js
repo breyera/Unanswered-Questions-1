@@ -1,19 +1,19 @@
 const router = require('express').Router();
-const { Router } = require('express');
+const { fillPhilosopherData } = require('../utils/handlers');
 const {
     Comments,
     Philosopher,
-    Questions,
+    DailyQuestion,
     Quiz,
     Quote,
     User,
     Chat,
 } = require('../models');
 const withauth = require('../utils/auth');
+const { getDaysSinceMayTenth } = require('../utils/handlers');
 
 router.get('/', async (req, res) => {
     try {
-
         res.render('home', {
             logged_in: req.session.logged_in || false,
             carouselQuotes: [
@@ -49,9 +49,12 @@ router.get('/philosopher/:id', async (req, res) => {
             ],
         });
 
-        //if (!philosopherData.about||!philosopherData.youtube) {
-        //    philosopherData = await fillPhilosopherData(req.params.id, philosopherData);
-        //}
+        if (!philosopherData.about || !philosopherData.youtube) {
+            philosopherData = await fillPhilosopherData(
+                req.params.id,
+                philosopherData
+            );
+        }
 
         const philosopher = philosopherData.get({ plain: true });
 
@@ -110,13 +113,48 @@ router.get('/quiz/', async (req, res) => {
     }
 });
 
+router.get('/qotd/', async (req, res) => {
+    try {
+        const quotesData = await DailyQuestion.findByPk(
+            getDaysSinceMayTenth(),
+            {
+                include: [
+                    {
+                        model: Comments,
+                        required: false,
+                        include: [
+                            {
+                                model: User,
+                            },
+                        ],
+                    },
+                ],
+            }
+        );
+
+        console.log(quotesData);
+
+        const quotes = quotesData.get({ plain: true });
+
+        res.render('qotd', {
+            daily_question: quotes,
+            loggedIn: req.session.logged_in,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+        console.error(err);
+    }
+});
+
 router.get('/qotd/:id', async (req, res) => {
     try {
-        const quotesData = await Quotes.findByPK(req.params.id, {
+        const quotesData = await DailyQuestion.findByPk(req.params.id, {
             include: [
                 {
-                    model: quotes,
-                    attributes: ['id'],
+                    model: Comments,
+                },
+                {
+                    model: User,
                 },
             ],
         });
@@ -125,7 +163,7 @@ router.get('/qotd/:id', async (req, res) => {
 
         res.render('qotd', {
             quotes,
-            logged_in: req.session.loggeed_in,
+            loggedIn: req.session.logged_in,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -150,11 +188,17 @@ router.get('/', withauth, async (req, res) => {
 });
 
 router.get('/chatroom', (req, res) => {
-    res.render('joinchat');
+    res.render('joinchat', {
+        userid: req.session.user_id,
+        loggedIn: req.session.loggedIn,
+    });
 });
 
 router.get('/chat', (req, res) => {
-    res.render('chat');
+    res.render('chat', {
+        userid: req.session.user_id,
+        loggedIn: req.session.loggedIn,
+    });
 });
 
 router.get('/login', (req, res) => {

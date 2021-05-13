@@ -12,11 +12,11 @@ Polls.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        poll_name: {
+        pollName: {
             type: DataTypes.STRING,
         },
-        poll_text: {
-            type: DataTypes.STRING,
+        pollText: {
+            type: DataTypes.TEXT,
             allowNull: false,
         },
         vote_yes: {

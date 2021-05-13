@@ -613,13 +613,16 @@ nav {
 }
 .menu {
   display: flex;
-  margin-right: 30px;
+  margin-right: 2rem;
   flex-direction: row;
+  align-items: center;
   justify-content: flex-end;
   color: #fff;
 }
 .menu li {
   text-align: center;
+  vertical-align: middle;
+  align-content: center;
   margin-left: 2.5rem;
   color: #fff;
 }
@@ -630,7 +633,6 @@ nav {
   text-decoration: none;
   padding: 6px 0;
   transition: 0.5s;
-  font-size: 1.3rem;
 }
 
 .menu li::after {
@@ -655,10 +657,10 @@ nav {
   transform-origin: left;
 }
 .menu li:last-child {
-  margin-right: 3rem;
+    
 }
 .header {
-  margin-left: 3rem;
+  margin-left: 2rem;
 }
 #menuToggle {
   display: none;
