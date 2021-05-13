@@ -1,9 +1,13 @@
 const router = require('express').Router();
 <<<<<<< HEAD
+<<<<<<< HEAD
 const { Router } = require('express');
 =======
 const { fillPhilosopherData } = require('../utils/handlers');
 >>>>>>> 60c7412d123fb7fd2c5955adc63f304888cd87d1
+=======
+const { fillPhilosopherData } = require('../utils/handlers');
+>>>>>>> c87477a7c949bd2cd84c9775169eacdd9c020637
 const {
     Comments,
     Philosopher,
