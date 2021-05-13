@@ -7,6 +7,7 @@ const {
     Quiz,
     Quote,
     User,
+    Chat,
 } = require('../models');
 const withauth = require('../utils/auth');
 
@@ -148,6 +149,14 @@ router.get('/', withauth, async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
+});
+
+router.get('/chatroom', (req, res) => {
+    res.render('joinchat');
+});
+
+router.get('/chat', (req, res) => {
+    res.render('chat');
 });
 
 router.get('/login', (req, res) => {
