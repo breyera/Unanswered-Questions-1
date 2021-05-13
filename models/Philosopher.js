@@ -28,6 +28,9 @@ Philosopher.init(
         },
         videoUrl: {
             type: DataTypes.STRING
+        },
+        wikiLink: {
+            type: DataTypes.STRING
         }
         //maybe make this its own model
     },

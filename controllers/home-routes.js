@@ -1,5 +1,9 @@
 const router = require('express').Router();
+<<<<<<< HEAD
 const { Router } = require('express');
+=======
+const { fillPhilosopherData } = require('../utils/handlers');
+>>>>>>> 60c7412d123fb7fd2c5955adc63f304888cd87d1
 const {
     Comments,
     Philosopher,
@@ -13,7 +17,6 @@ const withauth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
-
         res.render('home', {
             logged_in: req.session.logged_in || false,
             carouselQuotes: [
@@ -49,9 +52,12 @@ router.get('/philosopher/:id', async (req, res) => {
             ],
         });
 
-        //if (!philosopherData.about||!philosopherData.youtube) {
-        //    philosopherData = await fillPhilosopherData(req.params.id, philosopherData);
-        //}
+        if (!philosopherData.about || !philosopherData.youtube) {
+            philosopherData = await fillPhilosopherData(
+                req.params.id,
+                philosopherData
+            );
+        }
 
         const philosopher = philosopherData.get({ plain: true });
 

@@ -21,6 +21,7 @@ User.init(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             allowNull: false,
 =======
             allowNull: false
@@ -34,6 +35,9 @@ User.init(
 =======
             allowNull: false,
 >>>>>>> d0defb5c2b7042f2c1845cde45648e2b1e4e1557
+=======
+            allowNull: false,
+>>>>>>> 60c7412d123fb7fd2c5955adc63f304888cd87d1
         },
         password: {
             type: DataTypes.STRING,
