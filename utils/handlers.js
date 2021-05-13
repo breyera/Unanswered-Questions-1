@@ -24,8 +24,8 @@ const getYoutubeUrl = async (philosopherData) => {
     try {
         const results = await YTsearch(query, opts);
         // console.dir(results);
-        console.log(results);
-        return {id:results[0].id};
+        // console.log(results.results);
+        return {id:results.results[0].id};
     } catch (err) {
         console.error(err);
         return '';
@@ -64,6 +64,7 @@ const fillPhilosopherData = async (id, philosopherData) => {
     let newPhilosopherData = philosopherData;
     const yt = await getYoutubeUrl(newPhilosopherData);
     const wiki = await getWikiData(newPhilosopherData);
+    console.log(wiki.readMoreURL.replace(/ /g, '%20'));
 
     newPhilosopherData.videoUrl = yt.id;
     newPhilosopherData.about = wiki.content;
