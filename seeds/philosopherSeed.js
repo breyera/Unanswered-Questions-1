@@ -1,6 +1,6 @@
 const { Philosopher } = require('../models')
 
-const philospherData = [
+const philosopherData = [
 
     {
         name: 'aristotle',
