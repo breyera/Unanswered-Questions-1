@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Router } = require('express');
+const { fillPhilosopherData } = require('../utils/handlers');
 const {
     Comments,
     Philosopher,
@@ -13,7 +13,6 @@ const withauth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
-
         res.render('home', {
             logged_in: req.session.logged_in || false,
             carouselQuotes: [
@@ -49,9 +48,12 @@ router.get('/philosopher/:id', async (req, res) => {
             ],
         });
 
-        //if (!philosopherData.about||!philosopherData.youtube) {
-        //    philosopherData = await fillPhilosopherData(req.params.id, philosopherData);
-        //}
+        if (!philosopherData.about || !philosopherData.youtube) {
+            philosopherData = await fillPhilosopherData(
+                req.params.id,
+                philosopherData
+            );
+        }
 
         const philosopher = philosopherData.get({ plain: true });
 

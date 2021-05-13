@@ -4,10 +4,10 @@
     <section class="profile">
         <div class="profile-container">
             <div class="profile-body">
-                <h1 id="philosopher-name" class="philosopher-name"><b>{{philosopher.name}}</b></h1>
+                <h1 id="philosopher-name" class="philosopher-name capitalize"><b>{{philosopher.name}}</b></h1>
                 <!-- add video from youtube  -->
                 <div class="video">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{philosopher.youtubeVideoID}}" frameborder="0"
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{philosopher.videoUrl}}" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
                 </div>
@@ -24,7 +24,11 @@
                             {{/if}}
                         </p>
                         <div class="philosopher-more">
-                            <button class="whitespace-nowrap w-auto px-4" href="{{philosopher.wikiLink}}" id="wiki-link">Learn More</button>
+                            <a href="{{philosopher.wikiLink}}">
+                                <button class="whitespace-nowrap w-auto px-4" " id="wiki-link">Learn More
+
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
