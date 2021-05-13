@@ -2,7 +2,7 @@
     <!--  qotd card  -->
     <div class=''>
         <h1>Daily Question</h1>
-        <h2>{{DailyQuestion.queston}}</h2>
+        <h2>{{daily_question.question}}</h2>
 
     </div>
 
@@ -11,7 +11,7 @@
     <div class=''>
         <h1>Comments</h1>
         <!--  each comments as comment card  -->
-        {{#each comments as |comment|}}
+        {{#each daily_question.comments as |comment|}}
         <div>
             <h3>{{user.name}}</h3>
             <p>{{comment.comment}}</p>
@@ -21,13 +21,13 @@
 
 
         <!--  submit comment (logged in)  -->
-        {{#if }}
+        {{#if loggedIn}}
         <!--comment input -->
         <div>
             <h3>Join the discussion</h3>
             <input type="text"><button>Submit</button>
         </div>
-        {{#else}}
+        {{else}}
         <!-- link to the login page -->
         <div>
             <h3>Log in to join the discussion.</h3>
