@@ -13,7 +13,7 @@
         <!--  each comments as comment card  -->
         {{#each daily_question.comments as |comment|}}
         <div>
-            <h3>{{user.name}}</h3>
+            <h3>{{comment.name}}</h3>
             <p>{{comment.comment}}</p>
 
         </div>
@@ -25,17 +25,18 @@
         <!--comment input -->
         <div>
             <h3>Join the discussion</h3>
-            <input type="text"><button>Submit</button>
+
+            <input data-userid={{}} data-dq={{}} type="text"><button>Submit</button>
+
         </div>
         {{else}}
         <!-- link to the login page -->
         <div>
             <h3>Log in to join the discussion.</h3>
 
-            <button>Log In</button>
-
-
-
+            <form method="get" action="/">
+                <button type="submit">Log in</button>
+            </form>
         </div>
         {{/if}}
 
