@@ -31,7 +31,8 @@
         "postcss": "^8.2.15",
         "postcss-cli": "^8.3.1",
         "sequelize": "^6.6.2",
-        "tailwindcss": "^2.1.2"
+        "tailwindcss": "^2.1.2",
+        "youtube-search": "^1.1.6"
     },
     "devDependencies": {
         "autoprefixer": "^10.2.5",

@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const YTsearch = require('youtube-search');
 
 const { Philosopher } = require('../models');
 
@@ -13,25 +14,22 @@ const getDaysSinceMayTenth = () => {
 };
 
 const getYoutubeUrl = async (philosopherData) => {
-    const YTparams = {
-        part: 'snippet',
-        type: 'video',
-        videoSyndicated: 'true',
-        order: 'relevance',
+    const opts = {
         maxResults: 1,
-        // key: "AIzaSyA-PERyp6RWtIztoWvv4dynZlpds03hj-o",
-        key: 'AIzaSyBWH8ojYF9YRbijUhlBQeCjuLtH6SQTIzQ',
-        q: philosopherData.name + ' philosophy',
-        safeSearch: 'none',
+        key: process.env.GOOGLEAPIKEY,
     };
-    const url = 'https://www.googleapis.com/youtube/v3/search';
-    console.log('===============')
-    console.log(YTparams);
-    console.log(url);
 
-    const youtubeResults = await fetch(url, YTparams);
-    console.log(youtubeResults);
-    return youtubeResults.items;
+    const query = philosopherData.name + ' philosophy';
+
+    try {
+        const results = await YTsearch(query, opts);
+        // console.dir(results);
+        console.log(results);
+        return {id:results[0].id};
+    } catch (err) {
+        console.error(err);
+        return '';
+    }
 };
 
 const getWikiData = async (philosopherData) => {
@@ -67,6 +65,7 @@ const fillPhilosopherData = async (id, philosopherData) => {
     const yt = await getYoutubeUrl(newPhilosopherData);
     const wiki = await getWikiData(newPhilosopherData);
 
+    newPhilosopherData.videoUrl = yt.id;
     newPhilosopherData.about = wiki.content;
     newPhilosopherData.wikiLink = wiki.readMoreURL;
 
