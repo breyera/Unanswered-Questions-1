@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class Polls extends Model { }
+class Chat extends Model {}
 
-Polls.init(
+Chat.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -12,20 +12,12 @@ Polls.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        pollName: {
+        chatname: {
             type: DataTypes.STRING,
         },
-        pollText: {
-            type: DataTypes.TEXT,
+        user_id: {
+            type: DataTypes.INTEGER,
             allowNull: false,
-        },
-        vote_yes: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0,
-        },
-        vote_no: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0,
         },
     },
     {
@@ -33,8 +25,8 @@ Polls.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'polls',
+        modelName: 'chat',
     }
 );
 
-module.exports = Polls;
+module.exports = Chat;

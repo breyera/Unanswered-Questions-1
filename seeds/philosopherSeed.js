@@ -33,12 +33,12 @@ const philosopherData = [
         period: 'ancient'
     },
     {
-        name: 'st.augustine',
+        name: 'st. augustine',
         img: 'augustine.jpg',
         period: 'medieval'
     },
     {
-        name: 'st.thomas aquinas',
+        name: 'st. thomas aquinas',
         img: 'thomas-aquinas.jpg',
         period: 'medieval'
     },
@@ -225,5 +225,5 @@ const philosopherData = [
 
 ]
 
-const seedPhilosopher = () => Philosopher.bulkCreate(philospherData);
+const seedPhilosopher = () => Philosopher.bulkCreate(philosopherData);
 module.exports = seedPhilosopher;
