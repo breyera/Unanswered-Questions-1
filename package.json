@@ -34,15 +34,15 @@
         "sequelize": "^6.6.2",
         "socket.io": "^4.0.2",
         "tailwindcss": "^2.1.2",
-        "youtube-search": "^1.1.6"
-    },
-    "devDependencies": {
+        "youtube-search": "^1.1.6",
         "autoprefixer": "^10.2.5",
         "cssnano": "^5.0.2",
+        "yarn": "^1.22.10"
+    },
+    "devDependencies": {
         "eslint": "^7.26.0",
         "jest": "^26.6.3",
         "nodemon": "^2.0.7",
         "prettier": "^2.2.1",
-        "yarn": "^1.22.10"
     }
 }
