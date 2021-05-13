@@ -19,8 +19,10 @@
     },
     "homepage": "https://github.com/ZacharyEggert/Unanswered-Questions#readme",
     "dependencies": {
+        "autoprefixer": "^10.2.5",
         "bcrypt": "^5.0.1",
         "connect-session-sequelize": "^7.1.1",
+        "cssnano": "^5.0.2",
         "dotenv": "^9.0.2",
         "eslint-config-prettier": "^8.3.0",
         "express": "^4.17.1",
@@ -34,15 +36,13 @@
         "sequelize": "^6.6.2",
         "socket.io": "^4.0.2",
         "tailwindcss": "^2.1.2",
+        "yarn": "^1.22.10",
         "youtube-search": "^1.1.6"
     },
     "devDependencies": {
-        "autoprefixer": "^10.2.5",
-        "cssnano": "^5.0.2",
         "eslint": "^7.26.0",
         "jest": "^26.6.3",
         "nodemon": "^2.0.7",
-        "prettier": "^2.2.1",
-        "yarn": "^1.22.10"
+        "prettier": "^2.2.1"
     }
 }
