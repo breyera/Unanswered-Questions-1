@@ -1,13 +1,5 @@
 const router = require('express').Router();
-<<<<<<< HEAD
-<<<<<<< HEAD
-const { Router } = require('express');
-=======
 const { fillPhilosopherData } = require('../utils/handlers');
->>>>>>> 60c7412d123fb7fd2c5955adc63f304888cd87d1
-=======
-const { fillPhilosopherData } = require('../utils/handlers');
->>>>>>> c87477a7c949bd2cd84c9775169eacdd9c020637
 const {
     Comments,
     Philosopher,
@@ -123,23 +115,7 @@ router.get('/quiz/', async (req, res) => {
     }
 });
 
-<<<<<<< HEAD
-router.get('/qotd', async (req, res) => {
-    try {
-        const quotesData = await Quotes.findAll({
-            include: [
-                {
-                    model: Quote
-                },
-            ],
-        });
 
-        const quotes = quotesData.map(e=>e.get({ plain: true }));
-
-        res.render('qotd', {
-            quotes,
-            logged_in: req.session.loggeed_in || false,
-=======
 router.get('/qotd/', async (req, res) => {
     try {
         const quotesData = await DailyQuestion.findByPk(
@@ -165,13 +141,8 @@ router.get('/qotd/', async (req, res) => {
 
         res.render('qotd', {
             daily_question: quotes,
-<<<<<<< HEAD
-            loggedIn: req.session.logged_in,
->>>>>>> 569300ad7b16199af3a9a7a58fc3aac366f7564d
-=======
             loggedIn: req.session.logged_in || false,
             currentUser: req.session.logged_name,
->>>>>>> a3e5553c9f72b5ccf66f1a175bf77afe34f8264f
         });
     } catch (err) {
         res.status(500).json(err);
