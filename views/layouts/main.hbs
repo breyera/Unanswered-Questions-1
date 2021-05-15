@@ -30,6 +30,7 @@
 		/>
         <link rel='stylesheet' href='/css/style.css' />
         <link rel='stylesheet' href='/css/normalize.css' />
+        <link rel='stylesheet' href='/css/style.css' />
         <link rel='stylesheet' href='/css/stars.css' />
         <link rel='stylesheet' href='/css/owl.css' />
         <link rel='stylesheet' href='/css/philosopherlist.css' />
@@ -62,16 +63,16 @@
                     <li class='text-sm md:text-base lg:text-xl'><a
                             href='/polls'
                         >Polls</a></li>
+                    <a href='/chatroom'>
+                        <li
+                            class='text-sm md:text-base lg:text-xl'
+                        >LiveChat</li>
+                    </a>
                     {{#if loggedIn}}
-                        <a href='/logout'>
+                        <a href='/api/user/logout'>
                             <li
                                 class='text-sm md:text-base lg:text-xl'
                             >Logout</li>
-                        </a>
-                        <a href='/chat'>
-                            <li
-                                class='text-sm md:text-base lg:text-xl'
-                            >LiveChat</li>
                         </a>
                     {{else}}
                         <a href='/login'>
@@ -105,12 +106,12 @@
                         <a href='/polls'>
                             <li>Polls</li>
                         </a>
+                        <a href='/chatroom'>
+                            <li>LiveChat<br />&nbsp;<br /></li>
+                        </a>
                         {{#if loggedIn}}
-                            <a href='/logout'>
+                            <a href='/api/user/logout'>
                                 <li>Logout</li>
-                            </a>
-                            <a href='/chat'>
-                                <li>LiveChat<br />&nbsp;<br /></li>
                             </a>
                         {{else}}
                             <a href='/login'>
