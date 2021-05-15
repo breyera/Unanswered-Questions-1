@@ -21,4 +21,9 @@ const isContemporary = (philosopher) => {
     return isCorrectPeriod(philosopher, 'contemporary');
 };
 
-module.exports = { isAncient, isMedieval, isModern, isContemporary };
+const percent = (num1, num2) => {
+    const res =  Math.round((1000 * num1) / (num1 + num2)) / 10;
+    return res?res:0;
+};
+
+module.exports = { isAncient, isMedieval, isModern, isContemporary, percent };

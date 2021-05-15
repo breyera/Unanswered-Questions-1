@@ -1,6 +1,11 @@
-<main class="opacity-80 flex flex-row" style="background-image: url(/img/background-blue-petals.jpg);">
+<main class="poll-main" style="z-index:1;">
+
     <div class="py-14"></div>
-    {{#each polls as |poll|}}
-    {{> pollCard poll}}
-    {{/each}}
+    <div class="flex flex-row flex-wrap px-6">
+        {{#each polls as |poll|}}
+        {{> pollCard poll}}
+        {{/each}}
+    </div>
 </main>
+
+<script src="/js/poll.js"></script>

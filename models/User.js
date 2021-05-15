@@ -1,8 +1,14 @@
 const { Model, DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
 
 const sequelize = require('../config/connection');
 
-class User extends Model { }
+class User extends Model {
+    checkPassword(pw) {
+        console.log(pw, this.password);
+        return bcrypt.compareSync(pw, this.get('password'));
+    }
+}
 
 User.init(
     {
@@ -56,11 +62,11 @@ User.init(
         freezeTableName: true,
         underscored: true,
         modelName: 'user',
-        defaultScope: {
-            attributes: {
-                exclude: ['password']
-            }
-        }
+        scopes: {
+            withoutPassword: {
+                attributes: { exclude: ['password'] },
+            },
+        },
     }
 );
 
