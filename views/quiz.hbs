@@ -1,0 +1,41 @@
+<section
+    class='quiz-main w-screen min-h-screen flex flex-col items-center justify-center'
+>
+
+    <!-- welcome to quiz -->
+    <div class='welcome bg-black bg-opacity-60 py-4 px-6 rounded-md flex flex-col items-center'>
+        <h3 class='text-3xl text-center mb-2'>Philosophy Quiz</h3>
+        <p class='text-justify w-8/12 text-lg my-2'>
+            How much of philosophy do you know? Are you able to recognize which famous Philosopher said what? Give it a try!
+        </p>
+        <div>
+            <button class='min-w-max px-4' id="start-quiz">START QUIZ</button>
+        </div>
+    </div>
+    <div class='welcome quiz-container bg-black bg-opacity-60 py-4 px-6 rounded-md flex flex-col items-center' style='display: none;'>
+        <!-- <div id="quizHead">Select an answer </div> -->
+        <div class="p-4 mb-6 max-w-none md:max-w-prose">
+            <q class='question text-xl'>Question</q>
+        </div>
+        <div class='answers flex flex-row m-2 justify-between w-full flex-nowrap min-w-min'>
+            <button class='answer'>A</button>
+            <button class='answer'>B</button>
+            <button class='answer'>C</button>
+        </div>
+
+    </div>
+    <!-- was question right or wrong -->
+    <div class='welcome results results-container bg-black bg-opacity-60 py-4 px-6 rounded-md flex flex-col items-center' style='display: none;'>
+
+        <h2>
+            <span class='true-false text-xl text-center'>Correct!</span><br>
+            <q class='results-quote text-xl'>Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Accusamus odit saepe cum</q>
+        </h2>
+        <h2 class='results-author text-2xl pb-4'></h2>
+        <button class='rerun'>Try Another...</button>
+    </div>
+
+</section>
+
+<script src='/js/Quiz.js'></script>
