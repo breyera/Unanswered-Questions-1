@@ -15,6 +15,7 @@ const {
     Quiz,
     Quote,
     User,
+    Suggestions,
     Chat,
 } = require('../models');
 const withauth = require('../utils/auth');
@@ -234,6 +235,25 @@ router.get('/chat/:id', async (req, res) => {
         res.render('chat', {
             chat,
             logged_in: req.session.loggeed_in,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+//Suggestion home route!
+router.get('/suggestions/:id', async (req, res) => {
+    try {
+        const suggestionsData = await Suggestions.findByPk(req.session.user_id, {
+            attributes: { exclude: [''] },
+            include: [{model: Suggestions }],
+        });
+
+        const suggestions = suggestionsData.get({ plain: true });
+        
+        res.render('suggestions', {
+            suggestions, 
+            logged_in: req.session.logged_in,
         });
     } catch (err) {
         res.status(500).json(err);
