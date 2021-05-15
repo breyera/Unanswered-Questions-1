@@ -4,8 +4,9 @@
     "description": "A project for UW Full Stack Flex Course",
     "main": "server.js",
     "scripts": {
-        "test": "jest",
-        "start": "yarn build:css && node server.js",
+        "test": "",
+        "start": "node server.js",
+        "yarn-css": "yarn build:css",
         "build:css": "postcss public/css/tailwind.css -o public/css/style.css"
     },
     "repository": {
