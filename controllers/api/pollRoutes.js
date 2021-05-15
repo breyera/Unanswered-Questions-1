@@ -38,10 +38,11 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
+
+        console.log(req.body);
+
         const pollData = await Polls.update(
-            {
-                poll_name: req.body.poll_name,
-            },
+            req.body,
             {
                 where: {
                     id: req.params.id,
