@@ -14,6 +14,10 @@ Suggestions.init(
             primaryKey: true,
             autoIncrement: true,
         },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         suggestion: {
             type: DataTypes.STRING,
             allowNull: false,
