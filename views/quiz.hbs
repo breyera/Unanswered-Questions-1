@@ -1,0 +1,42 @@
+<section
+    class='quiz-main w-screen min-h-screen flex flex-col items-center justify-center'
+>
+
+    <!-- welcome to quiz -->
+    <div class='bg-black bg-opacity-60 py-4 px-6 rounded-md flex flex-col items-center'>
+        <h3 class='text-3xl text-center mb-2'>Philosophy Quiz</h3>
+        <p class='text-justify w-8/12 text-lg my-2'>
+            How much of philosophy do you know? Are you able to recognize which famous Philosopher said what? Give it a try!
+        </p>
+        <div>
+            <button class='min-w-max px-4'>START QUIZ</button>
+        </div>
+    </div>
+    <div class='welcome quiz-container' style='display: none;'>
+        <!-- <div id="quizHead">Select an answer </div> -->
+        <div>
+            <q class='question'>Question</q>
+        </div>
+        <div class='answers'>
+            <button class='answer'>A</button>
+            <button class='answer'>B</button>
+            <button class='answer'>C</button>
+        </div>
+
+    </div>
+    <!-- was question right or wrong -->
+    <div class='welcome results results-container' style='display: none;'>
+
+        <h2>
+            <span class='true-false'>Correct!</span>
+            <q class='results-quote'>Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Accusamus odit saepe cum</q>
+        </h2>
+        <h2 class='results-author'></h2>
+        <button class='rerun'>Try Another...</button>
+    </div>
+
+</section>
+
+<script src='assets/lib/JQ/jquery-3.6.0.min.js'></script>
+<script src='assets/js/Quiz.js'></script>
