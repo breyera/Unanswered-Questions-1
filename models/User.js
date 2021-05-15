@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
 
 const sequelize = require('../config/connection');
 
@@ -58,9 +59,9 @@ User.init(
         modelName: 'user',
         defaultScope: {
             attributes: {
-                exclude: ['password']
-            }
-        }
+                exclude: ['password'],
+            },
+        },
     }
 );
 

@@ -3,7 +3,8 @@ document.querySelector('#login').addEventListener('click', async (e) => {
     const user_name = document.querySelector('#username').value;
     const password = document.querySelector('#password').value;
 
-    await fetch('/api/login', {
+    await fetch('/api/user/login', {
+        headers: {'Content-Type': 'application/json'},
         method: 'POST',
         body: JSON.stringify({
             user_name,
@@ -17,7 +18,9 @@ document.querySelector('#signup').addEventListener('click', async (e) => {
     const user_name = document.querySelector('#signupusername').value;
     const password = document.querySelector('#signuppassword').value;
 
-    await fetch('/api/login', {
+
+    await fetch('/api/user', {
+        headers: {'Content-Type': 'application/json'},
         method: 'POST',
         body: JSON.stringify({
             email,
