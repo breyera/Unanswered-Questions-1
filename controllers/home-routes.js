@@ -140,6 +140,7 @@ router.get('/qotd/', async (req, res) => {
         res.render('qotd', {
             daily_question: quotes,
             loggedIn: req.session.logged_in,
+            currentUser: req.session.logged_name,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -213,8 +214,11 @@ router.get('/login', (req, res) => {
 
 router.get('/polls', async (req, res) => {
     try {
-        const pollsData = await Polls.findAll({ order: [['updatedAt', 'DESC']], raw: true });
-        console.log(pollsData)
+        const pollsData = await Polls.findAll({
+            order: [['updatedAt', 'DESC']],
+            raw: true,
+        });
+        console.log(pollsData);
         // const polls = pollsData.map((e) => {
         //     e.get({ plain: true });
         // });

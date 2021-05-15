@@ -16,6 +16,7 @@ document.querySelectorAll('.yes-btn').forEach((n) => {
                             ? target.getAttribute('data-yes') * 1 + 1
                             : 1,
                 },
+                headers: {'Content-Type': 'application/json'},
             }
         );
 
@@ -55,9 +56,10 @@ document.querySelectorAll('.no-btn').forEach((n) => {
                 body: {
                     vote_no:
                         target.getAttribute('data-no') * 1 + 1
-                            ? target.getAttribute('data-yes') * 1 + 1
+                            ? target.getAttribute('data-no') * 1 + 1
                             : 1,
                 },
+                headers: {'Content-Type': 'application/json'},
             }
         );
 
