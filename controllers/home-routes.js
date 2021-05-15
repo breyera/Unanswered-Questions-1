@@ -7,6 +7,7 @@ const {
     Quiz,
     Quote,
     User,
+    Suggestions,
     Chat,
     Polls,
 } = require('../models');
@@ -114,6 +115,7 @@ router.get('/quiz/', async (req, res) => {
     }
 });
 
+
 router.get('/qotd/', async (req, res) => {
     try {
         const quotesData = await DailyQuestion.findByPk(
@@ -166,6 +168,69 @@ router.get('/qotd/:id', async (req, res) => {
         res.render('qotd', {
             quotes,
             loggedIn: req.session.logged_in || false,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/poll/:id', async (req, res) => {
+    try {
+        const pollData = await Poll.findByPK(req.params.id, {
+            include: [
+                {
+                    model: poll,
+                    attributes: ['id'],
+                },
+            ],
+        });
+
+        const poll = pollData.get({ plain: true });
+
+        res.render('poll', {
+            poll,
+            logged_in: req.session.loggeed_in,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/chat/:id', async (req, res) => {
+    try {
+        const chatData = await Chat.findByPK(req.params.id, {
+            include: [
+                {
+                    model: chat,
+                    attributes: ['id'],
+                },
+            ],
+        });
+
+        const chat = chatData.get({ plain: true });
+
+        res.render('chat', {
+            chat,
+            logged_in: req.session.loggeed_in,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+//Suggestion home route!
+router.get('/suggestions/:id', async (req, res) => {
+    try {
+        const suggestionsData = await Suggestions.findByPk(req.session.user_id, {
+            attributes: { exclude: [''] },
+            include: [{model: Suggestions }],
+        });
+
+        const suggestions = suggestionsData.get({ plain: true });
+        
+        res.render('suggestions', {
+            suggestions, 
+            logged_in: req.session.logged_in,
         });
     } catch (err) {
         res.status(500).json(err);
