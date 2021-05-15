@@ -135,7 +135,7 @@ router.get('/qotd/', async (req, res) => {
             }
         );
 
-        console.log(quotesData);
+        //console.log(quotesData);
 
         const quotes = quotesData.get({ plain: true });
 
@@ -143,7 +143,10 @@ router.get('/qotd/', async (req, res) => {
             daily_question: quotes,
             loggedIn: req.session.logged_in || false,
             currentUser: req.session.logged_name,
+            currentUserId: req.session.user_id
         });
+        console.log(quotes);
+        console.log(quotes.comments[0].user);
     } catch (err) {
         res.status(500).json(err);
         console.error(err);
@@ -223,13 +226,13 @@ router.get('/suggestions/:id', async (req, res) => {
     try {
         const suggestionsData = await Suggestions.findByPk(req.session.user_id, {
             attributes: { exclude: [''] },
-            include: [{model: Suggestions }],
+            include: [{ model: Suggestions }],
         });
 
         const suggestions = suggestionsData.get({ plain: true });
-        
+
         res.render('suggestions', {
-            suggestions, 
+            suggestions,
             logged_in: req.session.logged_in,
         });
     } catch (err) {

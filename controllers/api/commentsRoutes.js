@@ -12,6 +12,7 @@ router.post('/', withAuth, async (req, res) => {
         // it will return to the commented post
 
         res.status(200).json(newComment);
+
     } catch (err) {
         res.status(500).json(err);
         console.error(err)

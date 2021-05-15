@@ -4,6 +4,7 @@
         <h1>Daily Question</h1>
         <h2>{{daily_question.question}}</h2>
 
+
     </div>
 
 
@@ -13,7 +14,7 @@
         <!--  each comments as comment card  -->
         {{#each daily_question.comments as |comment|}}
         <div>
-            <h3>{{comment.name}}</h3>
+            <h3>{{comment.user.user_name}}</h3>
             <p>{{comment.comment}}</p>
 
         </div>
@@ -26,8 +27,8 @@
         <div>
             <h4>Join the discussion</h4>
 
-            <input id="comment" data-userid={{}} data-dq={{daily_question.dataValues.id}} type="text"><button
-                id="submit">Submit</button>
+            <input id="comment" type="text"><button id="submit" data-userid={{currentUserId}}
+                data-dq={{daily_question.id}}>Submit</button>
 
         </div>
         {{else}}
@@ -43,3 +44,4 @@
 
     </div>
 </main>
+<script src="/js/qotd.js"></script>
