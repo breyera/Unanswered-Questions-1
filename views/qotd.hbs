@@ -1,6 +1,8 @@
-<main>
+<main class="p-7 pt-20 bg-black bg-opacity-80 flex flex-col justify-center w-screen min-h-screen"
+    style='background-image: url(/img/background-branches3.jpg);'>
+
     <!--  qotd card  -->
-    <div>
+    <div class="flex flex-col items-center">
         <h1>Daily Question</h1>
         <h2>{{daily_question.question}}</h2>
 
@@ -9,12 +11,13 @@
 
 
     <!--  commment section  -->
-    <div class=''>
-        <h3>Comments</h3>
+    <div class='m-14 p-7 bg-black bg-opacity-80 flex flex-col justify-center items-center'>
+        <h2 class='flex-1 items-center mb-10'>Comments</h2>
         <!--  each comments as comment card  -->
+
         {{#each daily_question.comments as |comment|}}
-        <div>
-            <h3>{{comment.user.user_name}}</h3>
+        <div class='p-10 mb-4 bg-white bg-opacity-20 rounded-md '>
+            <h3 class='pr-3'>{{comment.user.user_name}}</h3>
             <p>{{comment.comment}}</p>
 
         </div>
@@ -24,23 +27,25 @@
         <!--  submit comment   -->
         {{#if loggedIn}}
         <!--comment input -->
-        <div>
-            <h4>Join the discussion</h4>
+        <div class='flex flex-1 flex-col justify-center items-center my-5'>
+            <h4 class='my-5'>Join the discussion</h4>
 
-            <input id="comment" type="text"><button id="submit" data-userid={{currentUserId}}
+            <input id="comment" type="text"><button class=' my-5 min-w-max' id="submit" data-userid={{currentUserId}}
                 data-dq={{daily_question.id}}>Submit</button>
 
         </div>
         {{else}}
         <!-- link to the login page -->
-        <div>
-            <h4>Log in to join the discussion.</h4>
+        <div class="flex flex-1 flex-col justify-center items-center">
+            <h4 class='flex-1'>Log in to join the discussion.</h4>
 
-            <form method="get" action="/login">
-                <button type="submit">Log in</button>
-            </form>
+            <a class='flex-1' href="/login">
+                <button class=' min-w-max' type="submit">Log in</button>
+            </a>
+
         </div>
         {{/if}}
+
 
     </div>
 </main>
