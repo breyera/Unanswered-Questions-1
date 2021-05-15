@@ -4,7 +4,7 @@ const { Suggestions } = require('../../models');
 router.post('/', async (req, res) => {
     try {
         const newSuggestion = await Suggestions.create({
-            sugg_type: req.body.name,
+            sugg_type: req.body.sugg_type,
             name: req.body.name,
             quote: req.body.quote,
             question: req.body.question,

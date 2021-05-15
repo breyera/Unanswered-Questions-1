@@ -20,7 +20,9 @@ $(document).ready(function () {
 
 document.querySelector('#suggestion').addEventListener('click', async (e) => {
     e.preventDefault();
-    const sugg_type = document.querySelector('#suggestion-type');
+    const sugg_type = document.querySelector('#suggestion-type').options[
+        document.querySelector('#suggestion-type').selectedIndex
+    ].value;
     const name = document.querySelector('#phil-name').value;
     const quote = document.querySelector('#quote').value;
     const question = document.querySelector('#quest').value;
