@@ -14,6 +14,8 @@ Polls.init(
         },
         pollName: {
             type: DataTypes.STRING,
+<<<<<<< HEAD
+<<<<<<< HEAD
         },
         pollText: {
             type: DataTypes.TEXT,
@@ -27,6 +29,30 @@ Polls.init(
             type: DataTypes.INTEGER,
             defaultValue: 0,
         },
+=======
+
+=======
+>>>>>>> 1040682629195c59fe88f155bd3255d570152eca
+        },
+        poll_text: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        vote_yes: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
+        vote_no: {
+            type: DataTypes.INTEGER,
+<<<<<<< HEAD
+            defaultValue: 0
+        }
+
+>>>>>>> 2c4cd936bac42e6e3a1a4e276b74dfc817cb8d1f
+=======
+            defaultValue: 0,
+        },
+>>>>>>> 1040682629195c59fe88f155bd3255d570152eca
     },
     {
         sequelize,

@@ -1,5 +1,13 @@
 const router = require('express').Router();
+<<<<<<< HEAD
+<<<<<<< HEAD
+const { Router } = require('express');
+=======
 const { fillPhilosopherData } = require('../utils/handlers');
+>>>>>>> 60c7412d123fb7fd2c5955adc63f304888cd87d1
+=======
+const { fillPhilosopherData } = require('../utils/handlers');
+>>>>>>> c87477a7c949bd2cd84c9775169eacdd9c020637
 const {
     Comments,
     Philosopher,
@@ -7,6 +15,7 @@ const {
     Quiz,
     Quote,
     User,
+    Suggestions,
     Chat,
     Polls,
 } = require('../models');
@@ -114,6 +123,23 @@ router.get('/quiz/', async (req, res) => {
     }
 });
 
+<<<<<<< HEAD
+router.get('/qotd', async (req, res) => {
+    try {
+        const quotesData = await Quotes.findAll({
+            include: [
+                {
+                    model: Quote
+                },
+            ],
+        });
+
+        const quotes = quotesData.map(e=>e.get({ plain: true }));
+
+        res.render('qotd', {
+            quotes,
+            logged_in: req.session.loggeed_in || false,
+=======
 router.get('/qotd/', async (req, res) => {
     try {
         const quotesData = await DailyQuestion.findByPk(
@@ -139,8 +165,13 @@ router.get('/qotd/', async (req, res) => {
 
         res.render('qotd', {
             daily_question: quotes,
+<<<<<<< HEAD
+            loggedIn: req.session.logged_in,
+>>>>>>> 569300ad7b16199af3a9a7a58fc3aac366f7564d
+=======
             loggedIn: req.session.logged_in || false,
             currentUser: req.session.logged_name,
+>>>>>>> a3e5553c9f72b5ccf66f1a175bf77afe34f8264f
         });
     } catch (err) {
         res.status(500).json(err);
@@ -166,6 +197,69 @@ router.get('/qotd/:id', async (req, res) => {
         res.render('qotd', {
             quotes,
             loggedIn: req.session.logged_in || false,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/poll/:id', async (req, res) => {
+    try {
+        const pollData = await Poll.findByPK(req.params.id, {
+            include: [
+                {
+                    model: poll,
+                    attributes: ['id'],
+                },
+            ],
+        });
+
+        const poll = pollData.get({ plain: true });
+
+        res.render('poll', {
+            poll,
+            logged_in: req.session.loggeed_in,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/chat/:id', async (req, res) => {
+    try {
+        const chatData = await Chat.findByPK(req.params.id, {
+            include: [
+                {
+                    model: chat,
+                    attributes: ['id'],
+                },
+            ],
+        });
+
+        const chat = chatData.get({ plain: true });
+
+        res.render('chat', {
+            chat,
+            logged_in: req.session.loggeed_in,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+//Suggestion home route!
+router.get('/suggestions/:id', async (req, res) => {
+    try {
+        const suggestionsData = await Suggestions.findByPk(req.session.user_id, {
+            attributes: { exclude: [''] },
+            include: [{model: Suggestions }],
+        });
+
+        const suggestions = suggestionsData.get({ plain: true });
+        
+        res.render('suggestions', {
+            suggestions, 
+            logged_in: req.session.logged_in,
         });
     } catch (err) {
         res.status(500).json(err);

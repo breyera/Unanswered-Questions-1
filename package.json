@@ -42,7 +42,21 @@
     "devDependencies": {
         "eslint": "^7.26.0",
         "jest": "^26.6.3",
+<<<<<<< HEAD
+<<<<<<< HEAD
         "nodemon": "^2.0.7",
+<<<<<<< HEAD
+        "prettier": "^2.2.1",
+=======
+        "prettier": "^2.3.0",
+>>>>>>> 60c7412d123fb7fd2c5955adc63f304888cd87d1
+=======
+        "nodemon": "^2.0.7",
+        "prettier": "^2.2.1",
+>>>>>>> c87477a7c949bd2cd84c9775169eacdd9c020637
+        "yarn": "^1.22.10"
+=======
         "prettier": "^2.2.1"
+>>>>>>> a3e5553c9f72b5ccf66f1a175bf77afe34f8264f
     }
 }
