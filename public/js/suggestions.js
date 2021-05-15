@@ -25,7 +25,7 @@ document.querySelector('#suggestion').addEventListener('click', async (e) => {
     const question = document.querySelector('#quest').value;
     const qphilname = document.querySelector('#q-phil-name').value;
 
-    await fetch('/api/suggestion', {
+    await fetch('/api/suggestions', {
         method: 'POST',
         body: JSON.stringify({
             name,
@@ -33,5 +33,6 @@ document.querySelector('#suggestion').addEventListener('click', async (e) => {
             question,
             qphilname,
         }),
+        headers: { 'Content-Type': 'application/json' },
     });
 });
