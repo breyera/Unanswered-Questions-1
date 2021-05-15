@@ -36,25 +36,27 @@ router.post('/', async (req, res) => {
     }
 });
 
+
+
 router.put('/:id', async (req, res) => {
     try {
-      const questData = await DailyQuestion.update({
-        question: req.body.question,
-      },
-      {
-        where: {
-          id: req.params.id,
+        const questData = await DailyQuestion.update({
+            question: req.body.question,
         },
-      },
-      );
-  
-      if (!questData) {
-        res.status(404).json({ message: "No question found with this id!" });
-        return;
-      }
-      res.status(200).json(questData);
+            {
+                where: {
+                    id: req.params.id,
+                },
+            },
+        );
+
+        if (!questData) {
+            res.status(404).json({ message: "No question found with this id!" });
+            return;
+        }
+        res.status(200).json(questData);
     } catch (err) {
-      res.status(500).json(err);
+        res.status(500).json(err);
     }
 });
 
@@ -76,5 +78,7 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
 
 module.exports = router;
