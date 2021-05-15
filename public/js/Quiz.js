@@ -14,7 +14,7 @@ const rerunButton = $('.rerun');
 //LOAD
 const loadingScreen = $('.loading');
 //WELCOME
-const startButton = $('.buttonStart');
+const startButton = $('#start-quiz');
 const welcomeScreen = $('.welcome');
 
 /** --------------------------- */
@@ -46,6 +46,12 @@ const SHOW = '';
 const TEXTCOLORRIGHT = '';
 const TEXTCOLORWRONG = '';
 /** --------------------------- */
+
+/** ------- NEW FETCH --------- */
+
+const fetchQuotes = async () => {
+    return await fetch('/api/quotes');
+};
 
 /** -------- LISTENERS -------- */
 answerContainer.on('click', function (e) {
@@ -82,7 +88,7 @@ function pickFrom(length) {
 async function loadQuote() {
     toggleLoading(true);
 
-    quotes = quotes ?? (await fetchQuotes());
+    quotes = quotes ?? (await (await fetchQuotes()).json());
     console.log(quotes);
     // console.log("showing quoteDiv")
     welcomeScreen.attr('style', HIDE);
@@ -102,7 +108,7 @@ async function loadQuote() {
         }
     }
 
-    correctAuthor = quotes[quote].source;
+    correctAuthor = quotes[quote].author;
     listOfAuthors = [
         'Jean-Paul Sartre',
         'Marcus Aurelius',
@@ -142,7 +148,7 @@ async function loadQuote() {
     }
 
     questionEl.text(quotes[quote].quote);
-    answerEl.eq(randEl1).text(quotes[quote].source);
+    answerEl.eq(randEl1).text(quotes[quote].author);
     answerEl.eq(randEl2).text(wrongA1);
     answerEl.eq(randEl3).text(wrongA2);
 
@@ -155,7 +161,7 @@ function loadAnswer(bool) {
     quizContainer.attr('style', HIDE);
     resultsContainer.attr('style', SHOW);
     resultsBody.text(quotes[quote].quote);
-    resultsAuthor.text('-' + ' ' + quotes[quote].source);
+    resultsAuthor.text('-' + ' ' + quotes[quote].author);
     if (bool) {
         resultsTF.text('Correct!').attr('style', TEXTCOLORRIGHT);
     } else {
