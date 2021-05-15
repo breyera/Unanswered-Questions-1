@@ -1,6 +1,6 @@
 <main>
     <!--  qotd card  -->
-    <div class=''>
+    <div>
         <h1>Daily Question</h1>
         <h2>{{daily_question.question}}</h2>
 
@@ -9,7 +9,7 @@
 
     <!--  commment section  -->
     <div class=''>
-        <h1>Comments</h1>
+        <h3>Comments</h3>
         <!--  each comments as comment card  -->
         {{#each daily_question.comments as |comment|}}
         <div>
@@ -24,17 +24,18 @@
         {{#if loggedIn}}
         <!--comment input -->
         <div>
-            <h3>Join the discussion</h3>
+            <h4>Join the discussion</h4>
 
-            <input data-userid={{}} data-dq={{}} type="text"><button>Submit</button>
+            <input id="comment" data-userid={{}} data-dq={{daily_question.dataValues.id}} type="text"><button
+                id="submit">Submit</button>
 
         </div>
         {{else}}
         <!-- link to the login page -->
         <div>
-            <h3>Log in to join the discussion.</h3>
+            <h4>Log in to join the discussion.</h4>
 
-            <form method="get" action="/">
+            <form method="get" action="/login">
                 <button type="submit">Log in</button>
             </form>
         </div>
