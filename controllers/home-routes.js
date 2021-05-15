@@ -134,7 +134,7 @@ router.get('/qotd/', async (req, res) => {
             }
         );
 
-        console.log(quotesData);
+        //console.log(quotesData);
 
         const quotes = quotesData.get({ plain: true });
 
@@ -142,7 +142,10 @@ router.get('/qotd/', async (req, res) => {
             daily_question: quotes,
             loggedIn: req.session.logged_in || false,
             currentUser: req.session.logged_name,
+            currentUserId: req.session.user_id,
         });
+        console.log(quotes);
+        console.log(quotes.comments[0].user);
     } catch (err) {
         res.status(500).json(err);
         console.error(err);
