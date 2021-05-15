@@ -115,7 +115,6 @@ router.get('/quiz/', async (req, res) => {
     }
 });
 
-
 router.get('/qotd/', async (req, res) => {
     try {
         const quotesData = await DailyQuestion.findByPk(
@@ -143,7 +142,7 @@ router.get('/qotd/', async (req, res) => {
             daily_question: quotes,
             loggedIn: req.session.logged_in || false,
             currentUser: req.session.logged_name,
-            currentUserId: req.session.user_id
+            currentUserId: req.session.user_id,
         });
         console.log(quotes);
         console.log(quotes.comments[0].user);
@@ -222,17 +221,9 @@ router.get('/chat/:id', async (req, res) => {
 });
 
 //Suggestion home route!
-router.get('/suggestions/:id', async (req, res) => {
+router.get('/suggestions', async (req, res) => {
     try {
-        const suggestionsData = await Suggestions.findByPk(req.session.user_id, {
-            attributes: { exclude: [''] },
-            include: [{ model: Suggestions }],
-        });
-
-        const suggestions = suggestionsData.get({ plain: true });
-
         res.render('suggestions', {
-            suggestions,
             logged_in: req.session.logged_in,
         });
     } catch (err) {
