@@ -1,5 +1,3 @@
-const { sequelize } = require("./DailyQuestion");
-
 const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
