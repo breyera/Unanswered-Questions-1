@@ -16,7 +16,7 @@ const { getDaysSinceMayTenth } = require('../utils/handlers');
 router.get('/', async (req, res) => {
     try {
         res.render('home', {
-            logged_in: req.session.logged_in || false,
+            loggedIn: req.session.logged_in || false,
             carouselQuotes: [
                 {
                     imgUrl: 'carousel-image1_b.jpg',
@@ -61,7 +61,7 @@ router.get('/philosopher/:id', async (req, res) => {
 
         res.render('onePhilosopher', {
             philosopher,
-            logged_in: req.session.loggeed_in || false,
+            loggedIn: req.session.logged_in || false,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -85,7 +85,7 @@ router.get('/philosophers', async (req, res) => {
 
         res.render('allPhilosophers', {
             philosophers,
-            logged_in: req.session.loggeed_in || false,
+            loggedIn: req.session.logged_in || false,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -107,7 +107,7 @@ router.get('/quiz/', async (req, res) => {
 
         res.render('quiz', {
             quiz,
-            logged_in: req.session.loggeed_in,
+            loggedIn: req.session.logged_in || false,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -139,7 +139,7 @@ router.get('/qotd/', async (req, res) => {
 
         res.render('qotd', {
             daily_question: quotes,
-            loggedIn: req.session.logged_in,
+            loggedIn: req.session.logged_in || false,
             currentUser: req.session.logged_name,
         });
     } catch (err) {
@@ -165,7 +165,7 @@ router.get('/qotd/:id', async (req, res) => {
 
         res.render('qotd', {
             quotes,
-            loggedIn: req.session.logged_in,
+            loggedIn: req.session.logged_in || false,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -182,7 +182,7 @@ router.get('/', withauth, async (req, res) => {
 
         res.render('home', {
             user,
-            logged_in: true,
+            loggedIn: req.session.logged_in || false,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -192,14 +192,14 @@ router.get('/', withauth, async (req, res) => {
 router.get('/chatroom', (req, res) => {
     res.render('joinchat', {
         userid: req.session.user_id,
-        loggedIn: req.session.loggedIn,
+        loggedIn: req.session.logged_in || false,
     });
 });
 
 router.get('/chat', (req, res) => {
     res.render('chat', {
         userid: req.session.user_id,
-        loggedIn: req.session.loggedIn,
+        loggedIn: req.session.logged_in || false,
     });
 });
 
@@ -227,7 +227,7 @@ router.get('/polls', async (req, res) => {
 
         res.render('poll', {
             polls: pollsData,
-            loggedIn: req.session.logged_in,
+            loggedIn: req.session.logged_in || false,
             userID: req.session.user_id,
         });
     } catch (err) {
