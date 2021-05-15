@@ -3,6 +3,7 @@ const Models = require('../models');
 const dqSeed = require('./dailyQuestionSeed');
 const philSeed = require('./philosopherSeed');
 const pollSeed = require('./pollSeed');
+const quoteData = require('./seedQuotesv2.json');
 
 const seedDatabase = async () => {
     await sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
@@ -11,6 +12,7 @@ const seedDatabase = async () => {
     await dqSeed();
     await philSeed();
     await pollSeed();
+    await Models.Quote.bulkCreate(quoteData);
 
     return Models;
 };

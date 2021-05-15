@@ -3,6 +3,26 @@ const YTsearch = require('youtube-search');
 
 const { Philosopher } = require('../models');
 
+const randomPicks = (max, count) => {
+    console.log(max, count);
+    let outputArray = [];
+
+    if (max < count) {
+        throw new Error('Cannot pick without repeats: max smaller than count');
+    }
+
+    for (let i = 0; i < count; i++) {
+        let thisNum = max;
+        while (thisNum === max || outputArray.includes(thisNum)) {
+            thisNum = Math.floor(max * Math.random());
+        }
+        outputArray.push(thisNum);
+        // console.log(outputArray);
+    }
+
+    return outputArray;
+};
+
 const getDaysSinceMayTenth = () => {
     const mayTenth = new Date(2021, 5 - 1, 10);
     console.log(mayTenth);
@@ -25,7 +45,7 @@ const getYoutubeUrl = async (philosopherData) => {
         const results = await YTsearch(query, opts);
         // console.dir(results);
         // console.log(results.results);
-        return {id:results.results[0].id};
+        return { id: results.results[0].id };
     } catch (err) {
         console.error(err);
         return '';
@@ -74,4 +94,4 @@ const fillPhilosopherData = async (id, philosopherData) => {
     return newPhilosopherData;
 };
 
-module.exports = { getDaysSinceMayTenth, fillPhilosopherData };
+module.exports = { getDaysSinceMayTenth, fillPhilosopherData, randomPicks };

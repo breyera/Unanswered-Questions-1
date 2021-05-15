@@ -1,43 +1,52 @@
 const router = require('express').Router();
-const { fillPhilosopherData } = require('../utils/handlers');
+const {
+    fillPhilosopherData,
+    getDaysSinceMayTenth,
+    randomPicks,
+} = require('../utils/handlers');
 const {
     Comments,
     Philosopher,
     DailyQuestion,
-    Quiz,
     Quote,
     User,
-    Suggestions,
     Chat,
     Polls,
 } = require('../models');
 const withauth = require('../utils/auth');
-const { getDaysSinceMayTenth } = require('../utils/handlers');
+const { Op, fn, where: sWhere, col } = require('sequelize');
 
 router.get('/', async (req, res) => {
     try {
+        const quotesData = await Quote.findAll({
+            include: { model: Philosopher },
+            where: sWhere(fn('char_length', col('quote')), { [Op.lte]: 500 }), //WOOHOOO!
+        });
+        // console.log(quotesData);
+        const quotes = quotesData.map((e) => {
+            return e.get({ plain: true });
+        });
+        // console.log(quotes);
+
+        const quoteIds = randomPicks(
+            quotes.length,
+            5 < quotes.length ? 5 : quotes.length
+        );
+
+        const carouselQuotes = quoteIds.map((e) => {
+            // console.log(quotes[e]);
+            return quotes[e];
+        });
+        // console.log(quoteIds);
+        // console.log(carouselQuotes);
+
         res.render('home', {
             loggedIn: req.session.logged_in || false,
-            carouselQuotes: [
-                {
-                    imgUrl: 'carousel-image1_b.jpg',
-                    quote: 'This is a quote',
-                    credit: 'Zachary Eggert',
-                },
-                {
-                    imgUrl: 'carousel-image2_b.jpg',
-                    quote: "Don't quote me on that",
-                    credit: 'Alicia Breyer',
-                },
-                {
-                    imgUrl: 'carousel-image3_b.jpg',
-                    quote: 'This is a quote 3',
-                    credit: 'Zachary Eggert',
-                },
-            ],
+            carouselQuotes,
         });
     } catch (err) {
         res.status(500).json(err);
+        console.error(err);
     }
 });
 
@@ -96,18 +105,7 @@ router.get('/philosophers', async (req, res) => {
 
 router.get('/quiz/', async (req, res) => {
     try {
-        const quizData = await Quiz.findByPK(req.params.id, {
-            include: [
-                {
-                    model: quiz,
-                },
-            ],
-        });
-
-        const quiz = quizData.get({ plain: true });
-
         res.render('quiz', {
-            quiz,
             loggedIn: req.session.logged_in || false,
         });
     } catch (err) {
@@ -181,7 +179,7 @@ router.get('/poll/:id', async (req, res) => {
         const pollData = await Poll.findByPK(req.params.id, {
             include: [
                 {
-                    model: poll,
+                    model: Poll,
                     attributes: ['id'],
                 },
             ],
@@ -203,7 +201,7 @@ router.get('/chat/:id', async (req, res) => {
         const chatData = await Chat.findByPK(req.params.id, {
             include: [
                 {
-                    model: chat,
+                    model: Chat,
                     attributes: ['id'],
                 },
             ],
