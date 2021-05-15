@@ -6,6 +6,7 @@ const User = require('./User');
 const Comments = require('./Comments');
 const Polls = require('./Polls');
 const Chat = require('./Chat');
+const Suggestions = require('./Suggestions');
 
 Philosopher.hasMany(Quote, {
     foreignKey: 'philosopher_id',
@@ -39,6 +40,7 @@ module.exports = {
     Polls,
     Comments,
     Chat,
+    Suggestions,
     //Test,
     // Answers
 };

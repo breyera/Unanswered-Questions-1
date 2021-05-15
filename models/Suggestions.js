@@ -12,13 +12,25 @@ Suggestions.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        suggestion: {
+        sugg_type: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        quote: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        question: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        quotephilname: {
+            type: DataTypes.STRING,
+            allowNull: true,
         },
     },
     {
@@ -26,7 +38,7 @@ Suggestions.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'suggestions'
+        modelName: 'suggestions',
     }
 );
 

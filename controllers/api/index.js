@@ -7,6 +7,7 @@ const commentsRoutes = require('./commentsRoutes');
 const userRoutes = require('./userRoutes');
 const pollRoutes = require('./pollRoutes');
 const chatRoutes = require('./chatRoutes');
+const suggestionRoutes = require('./suggestionRoutes');
 
 router.use('/philosophers', philosopherRoutes);
 router.use('/quotes', quotesRoutes);
@@ -16,5 +17,6 @@ router.use('/comments', commentsRoutes);
 router.use('/user', userRoutes);
 router.use('/polls', pollRoutes);
 router.use('/chat', chatRoutes);
+router.use('/suggestions', suggestionRoutes);
 
 module.exports = router;

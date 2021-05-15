@@ -12,8 +12,12 @@ Quote.init(
             autoIncrement: true,
         },
         quote: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
+        },
+        author: {
+            type: DataTypes.STRING,
+            allowNull: true,
         },
 
         philosopher_id: {

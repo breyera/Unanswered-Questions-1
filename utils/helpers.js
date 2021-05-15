@@ -1,3 +1,5 @@
+const { randomPicks } = require('./handlers');
+
 const isCorrectPeriod = (philosopher, period) => {
     if (philosopher.period.toLowerCase() === period.toLowerCase()) {
         return true;
@@ -22,8 +24,34 @@ const isContemporary = (philosopher) => {
 };
 
 const percent = (num1, num2) => {
-    const res =  Math.round((1000 * num1) / (num1 + num2)) / 10;
-    return res?res:0;
+    const res = Math.round((1000 * num1) / (num1 + num2)) / 10;
+    return res ? res : 0;
 };
 
-module.exports = { isAncient, isMedieval, isModern, isContemporary, percent };
+const randomBgimg = () => {
+    const bgArray = [
+        'carousel-image1_b.jpg',
+        'carousel-image2_b.jpg',
+        'carousel-image3_b.jpg',
+        'background-branches.jpg',
+        'background-whiteflower2.jpg',
+        'background-daisy.jpg'
+        // 'carousel-image5_b.jpg',
+        // 'carousel-image6_b.jpg',
+        // 'carousel-image7_b.jpg',
+        // 'carousel-image8_b.jpg',
+        // 'carousel-image9_b.jpg',
+    ];
+    const random = randomPicks(bgArray.length, 1);
+
+    return bgArray[random];
+};
+
+module.exports = {
+    isAncient,
+    isMedieval,
+    isModern,
+    isContemporary,
+    percent,
+    randomBgimg,
+};
