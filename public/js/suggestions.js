@@ -20,19 +20,25 @@ $(document).ready(function () {
 
 document.querySelector('#suggestion').addEventListener('click', async (e) => {
     e.preventDefault();
+    const sugg_type = document.querySelector('#suggestion-type');
     const name = document.querySelector('#phil-name').value;
     const quote = document.querySelector('#quote').value;
     const question = document.querySelector('#quest').value;
-    const qphilname = document.querySelector('#q-phil-name').value;
+    const quotephilname = document.querySelector('#q-phil-name').value;
 
-    await fetch('/api/suggestions', {
+    const response = await fetch('/api/suggestions', {
+        headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         body: JSON.stringify({
+            sugg_type,
             name,
             quote,
             question,
-            qphilname,
+            quotephilname,
         }),
-        headers: { 'Content-Type': 'application/json' },
     });
+
+    if (response.ok) {
+        window.location.assign('/');
+    }
 });
