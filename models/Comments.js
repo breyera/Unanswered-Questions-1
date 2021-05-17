@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class Comments extends Model {}
+class Comments extends Model { }
 
 Comments.init(
     {
@@ -13,7 +13,7 @@ Comments.init(
             autoIncrement: true,
         },
         comment: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
         },
         user_id: {
