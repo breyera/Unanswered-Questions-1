@@ -29,6 +29,31 @@ Quote.init(
         },
     },
     {
+        hooks: {
+            afterFind: (dbQuote) => {
+                // console.log(dbQuote);
+                try {
+                    let newdbQuote = dbQuote.map((e) => {
+                        e.quote = e.quote
+                            .replace(/^"(.+)"$/, '$1')
+                            .replace(/\"\"/g, '"');
+                        return e;
+                    });
+                    return newdbQuote;
+                } catch (err) {
+                    console.error(err);
+                }
+                try {
+                    let newdbQuote = dbQuote;
+                    newdbQuote.quote = newdbQuote.quote
+                        .replace(/^"(.+)"$/, '$1')
+                        .replace(/\"\"/g, '"');
+                } catch (err) {
+                    console.error(err);
+                }
+                return dbQuote;
+            },
+        },
         sequelize,
         timestamps: false,
         freezeTableName: true,

@@ -1,5 +1,13 @@
 module.exports = {
-    purge: ['./views/**/*.hbs', './views/*.hbs', './views/partials/*.hbs'],
+    purge: {
+        enabled: true,
+        content: [
+            './views/**/*.hbs',
+            './views/*.hbs',
+            './public/css/*.css',
+            './public/js/*.js',
+        ],
+    },
     darkMode: false, // or 'media' or 'class'
     theme: {
         extend: {},

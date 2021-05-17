@@ -1096,6 +1096,7 @@ h2 {
 .poll-main::after {
     content: '';
     background: url(/img/background-blue-petals.jpg);
+    background-size: cover;
     background-attachment: fixed;
     opacity: 0.8;
     top: 0;
@@ -1107,5 +1108,23 @@ h2 {
 }
 
 .poll-main {
+    position: relative;
+}
+
+.quiz-main::after {
+    content: '';
+    background-image: url(/img/background-orangeleaves.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.quiz-main {
     position: relative;
 }

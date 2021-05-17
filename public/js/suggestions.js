@@ -6,12 +6,12 @@ $(document).ready(function () {
                 .each(function () {
                     var optionValue = $(this).attr('value');
                     if (optionValue) {
-                        $('.box')
+                        $('.box2')
                             .not('.' + optionValue)
                             .hide();
                         $('.' + optionValue).show();
                     } else {
-                        $('.box').hide();
+                        $('.box2').hide();
                     }
                 });
         })
