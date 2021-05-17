@@ -8,13 +8,6 @@ A website for the philosophically enthusiastic that serves the entry level by ag
 
 ---
 
-## Table of Contents
-    
-- [Description](#description)
-- [Project Overview](#project)
-- [License](#license)
-- [Contributing](#contributing)
-
 ## Project Overview
 
 This project was about coalescing all of what we have learned so far in the bootcamp. We were tasked with updating our website to follow MVC format and Node.js. We also implemented Handlebars.js, Express, Sequelize, and MySQL to add to the user experience. Additionally, we implemented Socket.io to create a live chat, bcrypt and hashing for login/logout, and created and seeded REST APIs for Questions, Quotes, and Philosophers with an ability for a user to provide suggestions. Users when logged in also have the ability to leave a comment on Question of the Day. The site can be accessed [here](http://unanswered-questions.herokuapp.com/), hosted on Heroku.
