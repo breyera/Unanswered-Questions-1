@@ -16,6 +16,7 @@ const loadingScreen = $('.loading');
 //WELCOME
 const startButton = $('#start-quiz');
 const welcomeScreen = $('.welcome');
+const suggContainer = $('.suggestions');
 
 /** --------------------------- */
 
@@ -94,6 +95,7 @@ async function loadQuote() {
     welcomeScreen.attr('style', HIDE);
     resultsContainer.attr('style', HIDE);
     quizContainer.attr('style', SHOW);
+    suggContainer.attr('style', SHOW);
 
     let wrongA1;
     let wrongA2;
