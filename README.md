@@ -36,7 +36,7 @@ Using these tools we were able to make multiple interactive elements, a click-th
 ---
 [View additional screenshots](https://github.com/ZacharyEggert/Unanswered-Questions/tree/master/public/img/screenshots/)
 ![screenshot of live chat](./public/img/screenshots/live-chat.PNG)
-![screenshot of poll page](./public/img/screenshots/poll-page.png)
+![screenshot of poll page](./public/img/screenshots/poll-page.PNG)
 
 ---
 
